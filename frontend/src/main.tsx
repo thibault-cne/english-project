@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import First from './pages/lessons/first/first'
+import First from './pages/lessons/first/First'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
