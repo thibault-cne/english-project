@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import First from './pages/lessons/first/First'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Exemple from './pages/lessons/exemple/exemple'
 
 const router = createBrowserRouter([
     {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
         element: <App />
     },
     {
-        path: "/lessons/first",
-        element: <First />
+        path: "/lessons/exemple",
+        element: <Exemple />
     }
 ])
 
