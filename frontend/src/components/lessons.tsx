@@ -1,4 +1,12 @@
-function Lessons({title, content, page_number, page_total, page_setter}: {title: string, content: JSX.Element, page_number: number, page_total: number, page_setter: React.Dispatch<React.SetStateAction<number>>}) {
+type Lesson = {
+    title: string,
+    content: JSX.Element,
+    page_number: number,
+    page_total: number,
+    page_setter: React.Dispatch<React.SetStateAction<number>>
+}
+
+function Lessons({title, content, page_number, page_total, page_setter}: Lesson) {
     return (
         <div className="flex flex-col h-full">
             <div>

@@ -1,5 +1,5 @@
-import Lessons from "../../../components/lessons";
-import HomeButton from "../../../components/homeButton";
+import Lessons from "../../components/lessons";
+import HomeButton from "../../components/homeButton";
 import { useState } from "react";
 
 function Exemple() {
