@@ -1,0 +1,376 @@
+body {
+    background-color: #121213;
+    color : #3aa9ff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #121213;
+}
+
+.topnav a {
+    float: right;
+    color: #3aa9ff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a.active {
+    float: left;
+}
+
+.navbar_picture {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar_picture_main {
+    width: 100px;
+    height: 55;
+}
+
+.main_picture {
+    text-align: center;
+    padding-top: 5%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.connection_input {
+    text-align: center;
+}
+
+.connection_input input {
+    background-color: #121213;
+    color: #3aa9ff;
+    text-align: center;
+    border-radius: 5%;
+    border: 1px solid #121213;
+    width: 300px;
+    height: 50px;
+    font-size: large ;
+}
+
+.connection_button {
+    text-align: center;
+}
+
+.connection_button button{
+    background-color: #3aa9ff;
+    color: white;
+    text-align: center;
+    border: 1px solid #3aa9ff;
+    width: 300px;
+    height: 50px;
+    border-radius: 5%;
+    font-size: large;
+}
+
+.connection_form {
+    margin-top: 150px;
+    margin-bottom: auto;
+}
+
+.error {
+    margin-top: 200px;
+    margin-bottom: auto;
+}
+
+.parameter_input {
+    text-align: center;
+}
+
+.parameter_input input {
+    background-color: #121213;
+    color: #3aa9ff;
+    text-align: center;
+    border-radius: 5%;
+    border: 1px solid #121213;
+    width: 500px;
+    height: 50px;
+    font-size: large ;
+}
+
+.parameter_button {
+    text-align: center;
+}
+
+.parameter_button button {
+    background-color: #3aa9ff;
+    color: white;
+    text-align: center;
+    border: 1px solid #3aa9ff;
+    width: 300px;
+    height: 50px;
+    border-radius: 5%;
+    font-size: large;
+}
+
+.parameter_form {
+    text-align: center;
+}
+
+.pdp {
+    text-align: center;
+}
+
+.pdp img {
+    border-radius: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.game_row {
+    text-align: center;
+}
+
+.game_row textarea {
+    resize: none;
+    text-align: center;
+    color: #121213;
+    background-color: #3aa9ff;
+    border-color: #3aa9ff;
+    height: 75px;
+    width: 75px;
+    font-size: 50px;
+    border-radius: 10px;
+    box-shadow: none;
+    line-height: 75px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: auto;
+    margin-left: 20px;
+    margin-right: auto;
+    text-transform: capitalize;
+
+}
+
+.game_row textarea.N::placeholder {
+    color: #121213;
+    opacity: 100%;
+}
+
+.game_row textarea.B::placeholder {
+    color: orange;
+    opacity: 100%;
+}
+
+.game_row textarea.V::placeholder {
+    color: green;
+    opacity: 100%;
+}
+
+
+.game_button button {
+    background-color: #3aa9ff;
+    color: white;    
+    border: 1px solid #3aa9ff;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: large;
+    margin: 30px 30px 0px 30px;
+    position: absolute;
+
+}
+
+.play_button {
+    text-align: center;
+}
+
+.play_button button {
+    background-color: #3aa9ff;
+    color: white;    
+    border: 1px solid #3aa9ff;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: large;
+
+}
+
+
+.historique table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+    background-color: #3aa9ff;
+    color: #121213;
+}
+
+.historique td, th {
+    border: 1px solid;
+}
+
+.victoire {
+    background-color: #379c02;
+}
+
+.defaite {
+    background-color: #9c0c02;
+}
+
+a {
+    color: #3aa9ff;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.deco_button{
+    text-align: center;
+}
+
+.deco_button button {
+    background-color:#3aa9ff;
+    color: #DDDDDD;
+    border: 1px solid #3aa9ff;
+    width: 300px;
+    height: 50px;
+    border-radius: 5%;
+    font-size: large;
+}
+
+.succes_column {
+    float: left;
+    width: 10%;
+    padding: 7%;
+    text-align: center;
+}
+
+.succes_column_lock {
+    float: left;
+    width: 10%;
+    padding: 7%;
+    text-align: center;
+}
+
+.stat_table {
+    margin: auto;
+    padding-left: 10%;
+    border: #3aa9ff solid;
+}
+
+.succes_column_lock img {
+    opacity: 10%;
+}
+
+.succes_row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+.statistique {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img_stats {
+    text-align: center;
+}
+
+.img_stats img{
+    padding: 5%;
+    width: 50%;
+}
+
+/* Code copié */
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 75px;
+    cursor: pointer;
+}
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before,
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+}
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+    left:0; top: -3px;
+    width: 65px; height: 30px;
+    background: #DDDDDD;
+    border-radius: 15px;
+    -webkit-transition: background-color .2s;
+    -moz-transition: background-color .2s;
+    -ms-transition: background-color .2s;
+    transition: background-color .2s;
+}
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+    width: 20px; height: 20px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    transition: all .2s;
+    border-radius: 50%;
+    background: #3aa9ff;
+    top: 2px; left: 5px;
+}
+
+/* on checked */
+[type="checkbox"]:checked + label:before {
+    background:#121213; 
+}
+[type="checkbox"]:checked + label:after {
+    background: #3aa9ff;
+    top: 2px; left: 40px;
+}
+
+[type="checkbox"]:checked + label .ui,
+[type="checkbox"]:not(:checked) + label .ui:before,
+[type="checkbox"]:checked + label .ui:after {
+    position: absolute;
+    left: 6px;
+    width: 65px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    transition: all .2s;
+}
+[type="checkbox"]:not(:checked) + label .ui:before {
+    content: "OFF";
+    left: 10px
+}
+[type="checkbox"]:checked + label .ui:after {
+    content: "ON";
+    left: -17px;
+    color: #3aa9ff;
+}
+[type="checkbox"]:focus + label:before {
+    border: 1px dashed #777;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: -1px;
+}
+

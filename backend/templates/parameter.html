@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+
+{% block title %} MADLE | Paramètres {% endblock %}
+
+
+{% block body %}
+
+<h1>Paramètres : </h1>
+
+<div class="parameter_form"> <!--Formulaire de sélection des paramètres -->
+    <form action="/parametres" method="POST">
+        <br>
+        <div class="parameter_input">
+            <input autocomplete="off" autofocus type="text" name="length" placeholder="Longueur du mot à deviner (entre 1 et 14)">
+        </div>
+        <br>
+        <div class="parameter_input">
+            <input autocomplete="off" autofocus type="text" name="guess" placeholder="Nombre d'essai maximum pour deviner un mot (entre 1 et 14)">
+        </div>
+        <br>
+        <div class="slideThree">
+            {% if darkmode == "ON" %}
+                <input type="checkbox" id="test1" name="darkmode" value="ON" checked>
+            {% else %}
+                <input type="checkbox" id="test1" name="darkmode">
+            {% endif %}
+            
+            <label for="test1">
+               <span class="ui">
+
+               </span> 
+               darkmode
+
+            </label> 
+        </div>
+        <br>
+        <div class="parameter_button">
+            <button type="submit">Confirmation</button>
+
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+
+{% block title %} MADLE | Connexion {% endblock %}
+
+{% block body %}
+
+<h1>Veuillez vous connecter pour accèder à votre profil.</h1>
+
+<div class="connection_form"> <!--Formulaire de connexion -->
+    <form action="/connexion" method = "POST">
+        <br>
+        <div class="connection_input">
+            <input autocomplete="off" autofocus type="text" name="pseudo" placeholder="Pseudonyme">
+        </div>
+        <br>
+        <div class="connection_input">    
+            <input autocomplete="off" autofocus type="password" name="password" placeholder="Mot de passe">
+        </div>
+        <br>
+        <div class="connection_button">
+            <button type="submit">Connexion</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
