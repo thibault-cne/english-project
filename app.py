@@ -473,4 +473,8 @@ def replay(f):                                                              #aff
     nb = res[0][1]
     taille = res [0][2]
     return render_template("replay.html", message="Word : ", nb = nb, victoire = (victoire == 1), essais=coups, taille=taille,couleur=couleur, darkmode=session["darkmode"], mot = mot, connected=session["connected"])
-app.run()
+
+
+@app.route("/lesson/<f>")
+def lesson(f):
+    return render_template("lessons/"+f+".html", darkmode=session["darkmode"], connected=session["connected"])
