@@ -107,17 +107,17 @@ def jeu():
             mot += request.form.get("Lettre"+str(i))
         mot = mot.upper()                                   #mise en majuscule pour coller à la liste de mot
         if len(mot) != session["taille"]:                   # si le mot n'est pas de la taille requise
-            session["message"]="Le mot n'est pas assez long"
+            session["message"]="Word is too short"
 
         else:
             if not verif_dico(mot):                         #vérification de la présence du mot dans le dico
-                session["message"]="Ce mot n'est pas dans notre dictionnaire" 
+                session["message"]="This word is not in our dictionary" 
             else:
                 res = correction(session["mot"], mot)
                 if res == ["V"]*session["taille"]:          #vérification de la condition de victoire
 
                     # MAJ des variables importantes
-                    session["message"]="Vous avez gagné ! Le mot à deviner était : "
+                    session["message"]="You won ! The word was : "
                     session["victoire"] = True
                     session["couleurs"][session["essai"]] = "V"*session["taille"]
                     session["essais"][session["essai"]] = mot
@@ -219,7 +219,7 @@ def jeu():
                     session["essai"] += 1
    
             if session["essai"] == session["nb"]:                                   # vérification de la condition de défaite
-                session["message"] = "Vous avez perdu ! Le mot à deviner était : "
+                session["message"] = "You lost ! The word was : "
                 session["res"] = session["mot"]
                 session["fini"] = True
 
@@ -472,5 +472,5 @@ def replay(f):                                                              #aff
     res = c.fetchall()
     nb = res[0][1]
     taille = res [0][2]
-    return render_template("replay.html", message="Mot à trouvé : ", nb = nb, victoire = (victoire == 1), essais=coups, taille=taille,couleur=couleur, darkmode=session["darkmode"], mot = mot, connected=session["connected"])
+    return render_template("replay.html", message="Word : ", nb = nb, victoire = (victoire == 1), essais=coups, taille=taille,couleur=couleur, darkmode=session["darkmode"], mot = mot, connected=session["connected"])
 app.run()

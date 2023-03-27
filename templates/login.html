@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 
-{% block title %} MADLE | Connexion {% endblock %}
+{% block title %} MADLE | Log in {% endblock %}
 
 {% block body %}
 
-<h1>Veuillez vous connecter pour accèder à votre profil.</h1>
+<h1> Please log in to have access to your account </h1>
 
 <div class="connection_form"> <!--Formulaire de connexion -->
     <form action="/connexion" method = "POST">
@@ -15,11 +15,11 @@
         </div>
         <br>
         <div class="connection_input">    
-            <input autocomplete="off" autofocus type="password" name="password" placeholder="Mot de passe">
+            <input autocomplete="off" autofocus type="password" name="password" placeholder="Password">
         </div>
         <br>
         <div class="connection_button">
-            <button type="submit">Connexion</button>
+            <button type="submit">Log in</button>
         </div>
     </form>
 </div>

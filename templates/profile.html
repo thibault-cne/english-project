@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<h1>Bienvenue sur votre page de profil : {{PSEUDO}}</h1>
+<h1>Welcome on your profile : {{PSEUDO}}</h1>
 
 <br>
 
@@ -88,7 +88,7 @@
 
         <tr> <!-- Plusieurs lignes avec une cellule du nom de la stat et une cellule de stat -->
             
-            <td>Numbers of won game :
+            <td>Numbers of games :
                 <br/>
                 {{nombre_parties}}
             
@@ -100,7 +100,7 @@
             
                 <br/>
             
-                Nombers of deafeats :
+                Numbers of deafeats :
                 <br>
                 {{nombre_defaites}}
 
@@ -112,7 +112,7 @@
 
                 <br/>
 
-                Mean of tries : 
+                Mean of trials : 
                 <br>
                 {{moyenne_nombre_coups}}
             </td>
@@ -139,10 +139,10 @@
     <table class="table"> <!--Tableau de l'historique des parties-->
         <thead>
             <tr>
-                <th scope="col">N° Partie</th>
+                <th scope="col">N° Game</th>
                 <th scope="col">Word to guess</th>
-                <th scope="col">Nomber of possible tries</th>
-                <th scope="col">Tries :</th>
+                <th scope="col">Number of possible trials</th>
+                <th scope="col">Trials :</th>
             </tr>
         </thead>
         <tbody>

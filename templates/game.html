@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 
 
-{% block title %} MADLE | Jeu {% endblock %}
+{% block title %} MADLE | Game {% endblock %}
 
 
 {% block body %}
 
 
-<H1>{{message}} <a href="https://www.larousse.fr/dictionnaires/francais/{{mot}}" target="_blank">{{ mot }}</a></H1>
+<H1>{{message}} <a href="https://www.wordreference.com/enfr/{{mot}}" target="_blank">{{ mot }}</a></H1>
 
 
 {% for i in range(nb) %} <!-- Boucle sur le nombre d'essai-->
@@ -64,7 +64,7 @@
 
 
                     <span class="game_button"> <!-- Bouton pour soumettre une proposition, il est en bout de ligne-->
-                        <button id="bouton" type="submit">Tenter</button>
+                        <button id="bouton" type="submit">Try</button>
                     </span> 
 
                 {% endif %}
@@ -100,7 +100,7 @@
 {% if fini == True %} <!-- Si la partie est finie-->
     <form action="/jeu">
         <div class="play_button">
-            <button type="submit">Rejouer</button>
+            <button type="submit">PLay again</button>
         </div>
     </form>
 
