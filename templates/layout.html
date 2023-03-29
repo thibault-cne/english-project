@@ -3,43 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% if darkmode == "ON" %} <!--Vérification du darkmode pour chargement de la bonne fiche de style--> 
-        <link href="../static/darkmode_style.css" rel="stylesheet">
-    {% else %}
-        <link rel="stylesheet" href="../static/lightmode_style.css">
-
-    {% endif %}
-    
-    
-        <link href="../static/favicon.ico" rel="shortcun icon">
     <title>{% block title %} {% endblock %}</title>
 </head>
-
-<body>
-    {% if connected %} <!--Vérification de la connexion pour donner accès au profil ou à la page de connexion-->
-    <header>
-        <div class="topnav">
-            <a class="active" href="/"><img class="navbar_picture_main" src="../static/logo.png" alt="logo"></a>
-            <a href="/profil"><img class="navbar_picture" src="../static/profil.png" alt="Login"></a>
-            <a href="/parametres"><img class="navbar_picture" src="../static/option.png" alt="Option"></a>
-        </div>
-
-    </header>
-
-    {% else %}
-    <header>
-        <div class="topnav">
-            <a class="active" href="/"><img class="navbar_picture_main" src="../static/logo.png" alt="logo"></a>
-            <a href="/connexion"><img class="navbar_picture" src="../static/login.png" alt="Login"></a>
-            <a href="/parametres"><img class="navbar_picture" src="../static/option.png" alt="Option"></a>
-        </div>
-
-    </header>
-
-    {% endif %}
-
     {% block body %}
+
+    
     
 
     {% endblock %}
