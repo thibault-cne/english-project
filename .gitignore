@@ -1,3 +1,2 @@
-*.env
-backend/back_env/*
-backend/__pycache__/*
+__pycache__/
+eng_env/
