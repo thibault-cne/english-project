@@ -1,5 +1,21 @@
 <script lang="ts">
+	import { env } from '$lib/env';
+	import { onMount } from 'svelte';
+
 	let funfact = 'This is a funfact';
+
+	onMount(() => {
+		fetch(env.backendUrl + '/fun-fact', {
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': 'http://localhost:5173'
+			}
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				funfact = data.fun_fact;
+			});
+	});
 </script>
 
 <svelte:head>

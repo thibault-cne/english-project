@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_cors import CORS
 import random as rd
 
 
@@ -25,6 +26,7 @@ current_TORF = False
 
 
 app = Flask(__name__)
+CORS(app, ressources={r'/*': {'origins': '*'}})
 
 @app.route('/')
 def hello_world():
@@ -39,10 +41,10 @@ def irregular_verbs():
     return render_template('irregular_verbs.html')
 
 
-@app.route("/fun_fact")
+@app.route("/fun-fact")
 def fun_fact():
     fun_fact = fun_facts[rd.randint(0, len(fun_facts)-1)]
-    return render_template('fun_fact.html', fun_fact_content=fun_fact)
+    return {"fun_fact": fun_fact}
 
 
 @app.route("/random_word")
@@ -90,4 +92,7 @@ def TORF_False():
         return "you lost !"
     else:
         return "you won !"
+    
+if __name__ == "__main__":
+    app.run(debug = True)
     
