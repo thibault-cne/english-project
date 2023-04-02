@@ -1,0 +1,53 @@
+<svelte:head>
+	<title>Lesson - 03</title>
+</svelte:head>
+
+<h1 class="p-4 text-[48px] font-bold">Lesson 3 : Singular and Plural Nouns 1</h1>
+
+<p class="text-[16px]">
+	<span class="font-semibold italic underline">Definition:</span>
+	Singular means only one. Plural means more than one. In order to make a noun plural, it is usually
+	only necessary to add s. However, there are many irregular nouns that add es. The rules for spelling
+	plural nouns are based on the letters at the end of the word. The chart below breaks up the rules into
+	categories so that they are easier to remember.
+</p>
+
+<div class="p-4">
+	<table class="table table-compact">
+		<thead>
+			<tr>
+				<th colspan="2">Rule</th>
+				<th>Examples</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>Most nouns</td>
+				<td>Add s to form the plural</td>
+				<td>dog -> dogs <br /> cat -> cats <br /> bug -> bugs</td>
+			</tr>
+
+			<tr>
+				<td> Nouns ending in s, x, z, ch, sh</td>
+				<td>Add es to form the plural. For words that end in z, add an extra z before the es.</td>
+				<td
+					>fox -> foxes <br /> box -> boxes <br /> buzz -> buzzes <br /> quiz -> quizzes <br /> beach
+					-> beaches
+				</td>
+			</tr>
+
+			<tr>
+				<td> Nouns ending in f or fe </td>
+				<td>
+					Some nouns ending in f or fe just add s. Sometimes it is necessary to change the f to a v.<br
+					/>
+					In that case, always end the word with es.
+				</td>
+				<td>
+					roofs -> roofs <br /> safe -> safes <br /> shelf -> shelves <br /> wife -> wives
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
