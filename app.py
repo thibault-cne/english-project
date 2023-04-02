@@ -55,6 +55,8 @@ def random_word():
         
     return render_template('random_word.html', en_word=en_word, fr_word=fr_word)
 
+
+
 @app.route("/TORF")
 def TORF():
     i = rd.randint(0, len(en_words)-1)
@@ -76,7 +78,7 @@ def TORF():
         return render_template('TORF.html', en_word=fr_word, fr_word=en_word)
     
 
-    
+
 @app.route("/TORF_True")
 def TORF_True():
     if current_TORF:
