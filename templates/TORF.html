@@ -1,0 +1,20 @@
+{% extends 'layout.html' %} 
+
+{% block title %} EnglishHub {% endblock %}
+    
+    
+{% block body %}
+
+
+<h1> Does the word {{en_word}} is the english of {{fr_word}} ? </h1>
+
+<form action="/TORF_True">
+    <button type="submit">True</button>
+</form>
+
+<form action="/TORF_False">
+    <button type="submit">False</button>
+</form>
+
+{% endblock %} 
+
