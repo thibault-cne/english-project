@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, session
 from flask_cors import CORS
 import random as rd
+from flask_session import *
 
 
 ### LOAD DATAS ###
@@ -21,11 +22,16 @@ with open("static/fun_facts") as f:
 
 current_TORF = False
 
-
 ### FLASK APP ###
 
 
 app = Flask(__name__)
+app.config["SECRET_KEY"]="madllefkhlkhe"
+app.config["SESSION_PERMANENT"]=False
+app.config["SESSION_TYPE"]='filesystem'
+Session()
+
+
 CORS(app, ressources={r'/*': {'origins': '*'}})
 
 @app.route('/')
@@ -57,10 +63,17 @@ def random_word():
         
     return render_template('random_word.html', en_word=en_word, fr_word=fr_word)
 
+
 @app.route("/TORF")
 def TORF():
     i = rd.randint(0, len(en_words)-1)
 
+    if not session.get("message") or session["message"][-1] != "\n":
+        session["message"] = ""
+
+    ### TODO : faire soit un système d'évaluation en reprenant ça soit on rajoute un compte de juste sur total
+
+    e = rd.randint(0, 1)
     n = rd.randint(0, 1)
     if n == 0:
         global current_TORF
@@ -78,7 +91,7 @@ def TORF():
         return {"en_word":en_word, "fr_word":fr_word}
     
 
-    
+
 @app.route("/TORF_True")
 def TORF_True():
     if current_TORF:
@@ -93,6 +106,9 @@ def TORF_False():
     else:
         return {"status": "won"}
     
+
+### TODO : QCM choisir 4 mots.
+
+    
 if __name__ == "__main__":
     app.run(debug = True)
-    
