@@ -14,7 +14,9 @@
 	});
 
 	function refresh() {
-		fetch(`${env.backendUrl}/TORF`)
+		fetch(`${env.backendUrl}/TORF`, {
+			credentials: 'include'
+		})
 			.then((res) => res.json())
 			.then((data) => {
 				words.eng = data.en_word;
@@ -27,6 +29,7 @@
 
 		fetch(url, {
 			method: 'GET',
+			credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json'
 			}

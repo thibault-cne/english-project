@@ -1,3 +1,4 @@
 __pycache__/
 eng_env/
 venv/
+flask_session/

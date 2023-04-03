@@ -36,9 +36,12 @@ app.config["SECRET_KEY"]="madllefkhlkhe"
 app.config["SESSION_PERMANENT"]=False
 app.config["SESSION_TYPE"]='filesystem'
 app.config['CORS_HEADERS'] = 'Content-Type,Authorization'
-Session()
+app.config["SESSION_COOKIE_SAMESITE"] = "None"
+app.config["SESSION_COOKIE_SECURE"] = True
 
-CORS(app, supports_credentials=True) 
+Session(app)
+
+CORS(app, origins=["http://localhost:5173"], headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'], supports_credentials=True) 
 
 @app.route('/')
 def hello_world():
@@ -111,24 +114,11 @@ def TORF_False():
         return {"status": "lost"}
     else:
         return {"status": "won"}
-    
-@app.after_request
-def after_request(response):
-  response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5173')
-  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-  return response
-    
-
-
 
 
 @app.route("/TORF_EXAM")
 def TORF_EXAM():
     i = rd.randint(0, len(en_words)-1)
-
-    if not session.get("message") or session["message"][-1] != "\n":
-        session["message"] = ""
 
     if not session.get("score"):
         session["score"] = 0
@@ -143,11 +133,8 @@ def TORF_EXAM():
         current_TORF = True
         en_word = en_words[i]
         fr_word = fr_words[i]
-        if (e==1):
-            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
-        else:
-            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
-        return render_template('TORF_EXAM.html', en_word=en_word, fr_word=fr_word, e=e, message=session["message"], score=session["score"], total=session["total"])
+
+        return {"status": "playing", "en_word":en_word, "fr_word":fr_word, "e":e, "score": session["score"], "total":session["total"]}
     else:
         current_TORF = False
         j = rd.randint(0, len(en_words)-1)
@@ -155,26 +142,20 @@ def TORF_EXAM():
             j = rd.randint(0, len(en_words)-1)
         en_word = en_words[j]   
         fr_word = fr_words[i]
-        if (e==1):
-            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
-        else:
-            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
         
-        return render_template('TORF_EXAM.html', en_word=fr_word, fr_word=en_word, e=e, message=session["message"], score=session["score"], total=session["total"])
+        return {"status": "playing", "en_word":en_word, "fr_word":fr_word, "e":e, "score": session["score"], "total":session["total"]}
     
 
 @app.route("/TORF_EXAM_True")
 def TORF_EXAM_True():
     session["total"] += 1
     if current_TORF:
-        session["message"] = "You won ! \n"
         session["score"] += 1
         if session["total"] == 10:
             return redirect("/TORF_EXAM_END")
 
         return redirect("/TORF_EXAM")    
     else:
-        session["message"] = "You lost ! \n"
         if session["total"] == 10:
             return redirect("/TORF_EXAM_END")
         return redirect("/TORF_EXAM")   
@@ -183,12 +164,10 @@ def TORF_EXAM_True():
 def TORF_EXAM_False():
     session["total"] += 1
     if current_TORF:
-        session["message"] = "You lost ! \n"
         if session["total"] == 10:
             return redirect("/TORF_EXAM_END")
         return redirect("/TORF_EXAM")   
     else:
-        session["message"] = "You won ! \n"
         session["score"] += 1
         if session["total"] == 10:
             return redirect("/TORF_EXAM_END")
@@ -201,8 +180,7 @@ def TORF_EXAM_RESULT():
     session["score"] = 0
     session["total"] = 0
 
-    return render_template('score.html', score=s, total=t)
-
+    return {"status": "end", "score": s, "total": t}
 
 @app.route("/disorder")
 def disorder():
