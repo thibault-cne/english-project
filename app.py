@@ -199,7 +199,7 @@ def disorder():
     for el in tmp:
         en_words_disorder += el
 
-    return render_template('disordered.html', permutated_word=en_words_disorder)
+    return {"permutated_word": en_words_disorder}
 
 @app.route("/verif_word")
 def verif_word():
@@ -207,9 +207,9 @@ def verif_word():
     print(word)
     print(en_words[session["disorder"]])
     if word == en_words[session["disorder"]]:
-        return "you won"
+        return {"status": "won"}
     else:
-        return "you lost"
+        return {"status": "lost"}
 
 
 ### TODO : QCM choisir 4 mots.
