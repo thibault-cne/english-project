@@ -1,23 +1,8 @@
-<script lang="ts">
-	import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
-	import type { TableSource } from '@skeletonlabs/skeleton';
-
-	const verbs = [{ position: 1, bv: 'abide', p: 'abode', pp: 'abode', translate: 'demeurer' }];
-
-	const table: TableSource = {
-		head: ['Base verbale', 'Preterit', 'Participe passé', 'Traduction'],
-		body: tableMapperValues(verbs, ['bv', 'p', 'pp', 'translate']),
-		meta: tableMapperValues(verbs, ['position', 'bv', 'p', 'pp', 'translate'])
-	};
-</script>
-
 <svelte:head>
 	<title>Irregular verbs</title>
 </svelte:head>
 
 <h1 class="font-bold text-[48px] p-4">Irregural verbs</h1>
-
-<Table source={table} />
 
 <div class="p-4">
 	<table class="table">

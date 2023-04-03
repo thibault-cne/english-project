@@ -3,7 +3,7 @@
 
 	import '@skeletonlabs/skeleton/styles/all.css';
 
-	import '../app.css';
+	import '../app.postcss';
 
 	import { AppShell } from '@skeletonlabs/skeleton';
 
@@ -44,7 +44,27 @@
 			<div class="flex-none">
 				<ul class="menu menu-horizontal px-1">
 					<li><a href="/fun-fact" class="unstyled btn btn-ghost">Fun fact</a></li>
-					<li><a href="/torf" class="unstyled btn btn-ghost">True or false</a></li>
+					<li tabindex="-1" class="font-semibold">
+						<span>
+							True or false
+							<svg
+								class="fill-current"
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
+							>
+						</span>
+						<ul class="p-2 bg-surface-700 z-10">
+							<li class="z-10">
+								<a href="/torf/playground" class="unstyled btn btn-ghost">Playground</a>
+							</li>
+							<li class="z-10">
+								<a href="/torf/exam" class="unstyled btn btn-ghost">Exam</a>
+							</li>
+						</ul>
+					</li>
 					<li tabindex="-1" class="font-semibold">
 						<span>
 							Lessons
@@ -75,7 +95,7 @@
 	</div>
 </AppShell>
 
-<style scoped>
+<style>
 	.navbar {
 		display: flex;
 		align-items: center;
@@ -139,11 +159,7 @@
 	.menu > :where(li:focus) > :where(ul) {
 		display: flex;
 	}
-	.menu[class*=' px-']:not(.menu[class*=' px-0']) li > *,
-	.menu[class*=' px-']:not(.menu[class*=' px-0']) li > *,
-	.menu[class*=' px-']:not(.menu[class*=' px-0']) li > *,
-	.menu[class*=' px-']:not(.menu[class*=' px-0']) li > *,
-	.menu[class^='p-']:not(.menu[class^='p-0']) li > * {
+	.menu li > * {
 		border-radius: var(--rounded-btn, 0.5rem);
 	}
 	.menu :where(li.bordered > *) {
