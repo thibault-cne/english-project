@@ -21,5 +21,6 @@ cd frontend
 Make sure to create a `.env.development` file identic as `exemple.env`.
 
 ```bash
+npm install
 npm run dev
 ```

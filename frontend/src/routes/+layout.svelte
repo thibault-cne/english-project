@@ -31,11 +31,12 @@
 
 <div class="navbar bg-base-100 z-10">
 	<div class="flex-1">
-		<a class="btn btn-ghost normal-case text-xl" href="/">EnglishHub</a>
+		<a class="btn btn-ghost normal-case text-xl" href="/">EnglishEasy</a>
 	</div>
 	<div class="flex-none">
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/fun-fact">Fun fact</a></li>
+			<li><a href="/torf">True or false</a></li>
 			<li tabindex="-1">
 				<span>
 					Lessons

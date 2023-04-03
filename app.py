@@ -67,7 +67,7 @@ def TORF():
         current_TORF = True
         en_word = en_words[i]
         fr_word = fr_words[i]
-        return render_template('TORF.html', en_word=en_word, fr_word=fr_word)
+        return {"en_word":en_word, "fr_word":fr_word}
     else:
         current_TORF = False
         j = rd.randint(0, len(en_words)-1)
@@ -75,23 +75,23 @@ def TORF():
             j = rd.randint(0, len(en_words)-1)
         en_word = en_words[j]   
         fr_word = fr_words[i]
-        return render_template('TORF.html', en_word=fr_word, fr_word=en_word)
+        return {"en_word":en_word, "fr_word":fr_word}
     
 
     
 @app.route("/TORF_True")
 def TORF_True():
     if current_TORF:
-        return "you won !"
+        return {"status": "won"}
     else:
-        return "you lost !"
+        return {"status": "lost"}
     
 @app.route("/TORF_False")
 def TORF_False():
     if current_TORF:
-        return "you lost !"
+        return {"status": "lost"}
     else:
-        return "you won !"
+        return {"status": "won"}
     
 if __name__ == "__main__":
     app.run(debug = True)
