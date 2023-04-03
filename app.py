@@ -80,11 +80,7 @@ def TORF():
         current_TORF = True
         en_word = en_words[i]
         fr_word = fr_words[i]
-        if (e==1):
-            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
-        else:
-            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
-        return render_template('TORF.html', en_word=en_word, fr_word=fr_word, e=e, message=session["message"])
+        return {"en_word":en_word, "fr_word":fr_word}
     else:
         current_TORF = False
         j = rd.randint(0, len(en_words)-1)
@@ -92,32 +88,23 @@ def TORF():
             j = rd.randint(0, len(en_words)-1)
         en_word = en_words[j]   
         fr_word = fr_words[i]
-        if (e==1):
-            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
-        else:
-            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
-        
-        return render_template('TORF.html', en_word=fr_word, fr_word=en_word, e=e, message=session["message"])
+        return {"en_word":en_word, "fr_word":fr_word}
     
 
 
 @app.route("/TORF_True")
 def TORF_True():
     if current_TORF:
-        session["message"] = "You won ! \n"
-        return redirect("/TORF")    
+        return {"status": "won"}
     else:
-        session["message"] = "You lost ! \n"
-        return redirect("/TORF")   
+        return {"status": "lost"}
     
 @app.route("/TORF_False")
 def TORF_False():
     if current_TORF:
-        session["message"] = "You lost ! \n"
-        return redirect("/TORF")   
+        return {"status": "lost"}
     else:
-        session["message"] = "You won ! \n"
-        return redirect("/TORF")   
+        return {"status": "won"}
     
 
 
