@@ -235,9 +235,35 @@ def verif_word():
 
 
 ### TODO : QCM choisir 4 mots.
+@app.route("/QCM")
+def QCM():
+    i = rd.randint(0, len(en_words)-1)
+
+    session["QCM"] = i
+
+    fr_list = []
+    
+    for _ in range(3):
+        j = rd.randint(0, len(fr_words)-1)
+        while j == i:
+            j = rd.randint(0, len(en_words)-1)
+        fr_list.append(fr_words[j])
+
+    fr_list.append(fr_words[i])
+
+    rd.shuffle(fr_list)
+
+    return render_template("QCM.html", fr_list=fr_list, en_word = en_words[i])
 
 
-
+@app.route("/verif_QCM")
+def verif_QCM():
+    word = request.args.get("word")
+    if word==fr_words[session["QCM"]]:
+        return "you won !"
+    else:
+        return "you lost !"
     
 if __name__ == "__main__":
     app.run(debug = True, port=5454)
+

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %} 
+
+{% block title %} EnglishHub {% endblock %}
+    
+    
+{% block body %}
+    <h1>
+        What is the french of {{en_word}} ?
+    </h1>
+
+    {% for el in fr_list %}
+
+    <form action="/verif_QCM">
+        <button type="submit" name="word" value="{{el}}">
+            {{ el }}
+        </button>
+    </form>
+    {% endfor %}
+
+{% endblock %} 
+
