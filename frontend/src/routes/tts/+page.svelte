@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { env } from '$lib/env';
+
 	const url = 'https://large-text-to-speech.p.rapidapi.com/tts';
 
 	const options = {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json',
-			'X-RapidAPI-Key': 'ef5f346a6amshe835ef743c94db9p10a9bfjsn401acd3872d0',
+			'X-RapidAPI-Key': env.rapidApiKey,
 			'X-RapidAPI-Host': 'large-text-to-speech.p.rapidapi.com'
 		},
 		body: '{"text":"Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away."}'
