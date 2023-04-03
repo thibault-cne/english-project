@@ -1,1148 +1,1161 @@
+<script lang="ts">
+	import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
+	import type { TableSource } from '@skeletonlabs/skeleton';
+
+	const verbs = [{ position: 1, bv: 'abide', p: 'abode', pp: 'abode', translate: 'demeurer' }];
+
+	const table: TableSource = {
+		head: ['Base verbale', 'Preterit', 'Participe passé', 'Traduction'],
+		body: tableMapperValues(verbs, ['bv', 'p', 'pp', 'translate']),
+		meta: tableMapperValues(verbs, ['position', 'bv', 'p', 'pp', 'translate'])
+	};
+</script>
+
 <svelte:head>
 	<title>Irregular verbs</title>
 </svelte:head>
 
-<div class="p-10">
-	<h1 class="font-bold text-[48px] p-4">Irregural verbs</h1>
-
-	<div class="p-4">
-		<table class="table table-compact">
-			<thead>
-				<tr>
-					<th>Base verbale</th>
-					<th>Preterit</th>
-					<th>Participe passé</th>
-					<th>Traduction</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>abide</td>
-					<td>abode</td>
-					<td>abode</td>
-					<td>demeurer</td>
-				</tr>
-
-				<tr>
-					<td>arise</td>
-					<td>arose</td>
-					<td>arisen</td>
-					<td>s'&eacute;lever, survenir</td>
-				</tr>
-
-				<tr>
-					<td>awake</td>
-					<td>awoke</td>
-					<td>awoken</td>
-					<td>(se) r&eacute;veiller</td>
-				</tr>
-
-				<tr>
-					<td>bear</td>
-					<td>bore</td>
-					<td>borne</td>
-					<td>supporter</td>
-				</tr>
-
-				<tr>
-					<td>beat</td>
-					<td>beat</td>
-					<td>beaten</td>
-					<td>battre</td>
-				</tr>
-
-				<tr>
-					<td>become</td>
-					<td>became</td>
-					<td>become</td>
-					<td>devenir</td>
-				</tr>
-
-				<tr>
-					<td>begin</td>
-					<td>began</td>
-					<td>begun</td>
-					<td>commencer</td>
-				</tr>
-
-				<tr>
-					<td>bend</td>
-					<td>bent</td>
-					<td>bent</td>
-					<td>(se) courber</td>
-				</tr>
-
-				<tr>
-					<td>bet</td>
-					<td>bet</td>
-					<td>bet</td>
-					<td>parier</td>
-				</tr>
-
-				<tr>
-					<td>bid</td>
-					<td>bid</td>
-					<td>bid</td>
-					<td>offrir (un prix)</td>
-				</tr>
-
-				<tr>
-					<td>bind</td>
-					<td>bound</td>
-					<td>bound</td>
-					<td>lier, relier</td>
-				</tr>
-
-				<tr>
-					<td>bite</td>
-					<td>bit</td>
-					<td>bitten</td>
-					<td>mordre</td>
-				</tr>
-
-				<tr>
-					<td>bleed</td>
-					<td>bled</td>
-					<td>bled</td>
-					<td>saigner</td>
-				</tr>
-
-				<tr>
-					<td>blow</td>
-					<td>blew</td>
-					<td>blown</td>
-					<td>souffler</td>
-				</tr>
-
-				<tr>
-					<td>break</td>
-					<td>broke</td>
-					<td>broken</td>
-					<td>casser</td>
-				</tr>
-
-				<tr>
-					<td>breed</td>
-					<td>bred</td>
-					<td>bred</td>
-					<td>&eacute;lever (du b&eacute;tail)</td>
-				</tr>
-
-				<tr>
-					<td>bring</td>
-					<td>brought</td>
-					<td>brought</td>
-					<td>apporter</td>
-				</tr>
-
-				<tr>
-					<td>build</td>
-					<td>built</td>
-					<td>built</td>
-					<td>construire</td>
-				</tr>
-
-				<tr>
-					<td>burn</td>
-					<td>burnt</td>
-					<td>burnt</td>
-					<td>br&ucirc;ler</td>
-				</tr>
-
-				<tr>
-					<td>burst</td>
-					<td>burst</td>
-					<td>burst</td>
-					<td>&eacute;clater</td>
-				</tr>
-
-				<tr>
-					<td>buy</td>
-					<td>bought</td>
-					<td>bought</td>
-					<td>acheter</td>
-				</tr>
-
-				<tr>
-					<td>cast</td>
-					<td>cast</td>
-					<td>cast</td>
-					<td>jeter, lancer</td>
-				</tr>
-
-				<tr>
-					<td>catch</td>
-					<td>caught</td>
-					<td>caught</td>
-					<td>attraper</td>
-				</tr>
-
-				<tr>
-					<td>choose</td>
-					<td>chose</td>
-					<td>chosen</td>
-					<td>choisir</td>
-				</tr>
-
-				<tr>
-					<td>cling</td>
-					<td>clung</td>
-					<td>clung</td>
-					<td>s'accrocher</td>
-				</tr>
-
-				<tr>
-					<td>come</td>
-					<td>came</td>
-					<td>come</td>
-					<td>venir</td>
-				</tr>
-
-				<tr>
-					<td>cost</td>
-					<td>cost</td>
-					<td>cost</td>
-					<td>co&ucirc;ter</td>
-				</tr>
-
-				<tr>
-					<td>creep</td>
-					<td>crept</td>
-					<td>crept</td>
-					<td>ramper</td>
-				</tr>
-
-				<tr>
-					<td>cut</td>
-					<td>cut</td>
-					<td>cut</td>
-					<td>couper</td>
-				</tr>
-
-				<tr>
-					<td>deal</td>
-					<td>dealt</td>
-					<td>dealt</td>
-					<td>distribuer</td>
-				</tr>
-
-				<tr>
-					<td>dig</td>
-					<td>dug</td>
-					<td>dug</td>
-					<td>creuser</td>
-				</tr>
-
-				<tr>
-					<td>do</td>
-					<td>did</td>
-					<td>done</td>
-					<td>faire</td>
-				</tr>
-
-				<tr>
-					<td>draw</td>
-					<td>drew</td>
-					<td>drawn</td>
-					<td>dessiner</td>
-				</tr>
-
-				<tr>
-					<td>dream</td>
-					<td>dreamt</td>
-					<td>dreamt</td>
-					<td>r&ecirc;ver</td>
-				</tr>
-
-				<tr>
-					<td>drink</td>
-					<td>drank</td>
-					<td>drunk</td>
-					<td>boire</td>
-				</tr>
-
-				<tr>
-					<td>drive</td>
-					<td>drove</td>
-					<td>driven</td>
-					<td>conduire</td>
-				</tr>
-
-				<tr>
-					<td>dwell</td>
-					<td>dwelt</td>
-					<td>dwelt</td>
-					<td>habiter</td>
-				</tr>
-
-				<tr>
-					<td>eat</td>
-					<td>ate</td>
-					<td>eaten</td>
-					<td>manger</td>
-				</tr>
-
-				<tr>
-					<td>fall</td>
-					<td>fell</td>
-					<td>fallen</td>
-					<td>tomber</td>
-				</tr>
-
-				<tr>
-					<td>feed</td>
-					<td>fed</td>
-					<td>fed</td>
-					<td>nourrir</td>
-				</tr>
-
-				<tr>
-					<td>feel</td>
-					<td>felt</td>
-					<td>felt</td>
-					<td>sentir, &eacute;prouver</td>
-				</tr>
-
-				<tr>
-					<td>fight</td>
-					<td>fought</td>
-					<td>fought</td>
-					<td>combattre</td>
-				</tr>
-
-				<tr>
-					<td>find</td>
-					<td>found</td>
-					<td>found</td>
-					<td>trouver</td>
-				</tr>
-
-				<tr>
-					<td>flee</td>
-					<td>fled</td>
-					<td>fled</td>
-					<td>s'enfuir</td>
-				</tr>
-
-				<tr>
-					<td>fling</td>
-					<td>flung</td>
-					<td>flung</td>
-					<td>jeter violemment</td>
-				</tr>
-
-				<tr>
-					<td>fly</td>
-					<td>flew</td>
-					<td>flown</td>
-					<td>voler</td>
-				</tr>
-
-				<tr>
-					<td>forbid</td>
-					<td>forbade</td>
-					<td>forbidden</td>
-					<td>interdire</td>
-				</tr>
-
-				<tr>
-					<td>forget</td>
-					<td>forgot</td>
-					<td>forgotten</td>
-					<td>oublier</td>
-				</tr>
-
-				<tr>
-					<td>forgive</td>
-					<td>forgave</td>
-					<td>forgiven</td>
-					<td>pardonner</td>
-				</tr>
-
-				<tr>
-					<td>freeze</td>
-					<td>froze</td>
-					<td>frozen</td>
-					<td>geler</td>
-				</tr>
-
-				<tr>
-					<td>get</td>
-					<td>got</td>
-					<td>got</td>
-					<td>obtenir</td>
-				</tr>
-
-				<tr>
-					<td>give</td>
-					<td>gave</td>
-					<td>given</td>
-					<td>donner</td>
-				</tr>
-
-				<tr>
-					<td>go</td>
-					<td>went</td>
-					<td>gone</td>
-					<td>aller</td>
-				</tr>
-
-				<tr>
-					<td>grind</td>
-					<td>ground</td>
-					<td>ground</td>
-					<td>moudre</td>
-				</tr>
-
-				<tr>
-					<td>grow</td>
-					<td>grew</td>
-					<td>grown</td>
-					<td>grandir</td>
-				</tr>
-
-				<tr>
-					<td>hang</td>
-					<td>hung</td>
-					<td>hung</td>
-					<td>pendre, accrocher</td>
-				</tr>
-
-				<tr>
-					<td>have</td>
-					<td>had</td>
-					<td>had</td>
-					<td>avoir</td>
-				</tr>
-
-				<tr>
-					<td>hear</td>
-					<td>heard</td>
-					<td>heard</td>
-					<td>entendre</td>
-				</tr>
-
-				<tr>
-					<td>hide</td>
-					<td>hid</td>
-					<td>hidden</td>
-					<td>(se) cacher</td>
-				</tr>
-
-				<tr>
-					<td>hit</td>
-					<td>hit</td>
-					<td>hit</td>
-					<td>frapper, atteindre</td>
-				</tr>
-
-				<tr>
-					<td>hold</td>
-					<td>held</td>
-					<td>held</td>
-					<td>tenir</td>
-				</tr>
-
-				<tr>
-					<td>hurt</td>
-					<td>hurt</td>
-					<td>hurt</td>
-					<td>blesser</td>
-				</tr>
-
-				<tr>
-					<td>keep</td>
-					<td>kept</td>
-					<td>kept</td>
-					<td>garder</td>
-				</tr>
-
-				<tr>
-					<td>kneel</td>
-					<td>knelt</td>
-					<td>knelt</td>
-					<td>s'agenouiller</td>
-				</tr>
-
-				<tr>
-					<td>know</td>
-					<td>knew</td>
-					<td>known</td>
-					<td>savoir, conna&icirc;tre</td>
-				</tr>
-
-				<tr>
-					<td>lay</td>
-					<td>laid</td>
-					<td>laid</td>
-					<td>poser &agrave; plat</td>
-				</tr>
-
-				<tr>
-					<td>lead</td>
-					<td>led</td>
-					<td>led</td>
-					<td>mener</td>
-				</tr>
-
-				<tr>
-					<td>lean</td>
-					<td>leant</td>
-					<td>leant</td>
-					<td>s'appuyer</td>
-				</tr>
-
-				<tr>
-					<td>leap</td>
-					<td>leapt</td>
-					<td>leapt</td>
-					<td>sauter</td>
-				</tr>
-
-				<tr>
-					<td>learn</td>
-					<td>learnt</td>
-					<td>learnt</td>
-					<td>apprendre</td>
-				</tr>
-
-				<tr>
-					<td>leave</td>
-					<td>left</td>
-					<td>left</td>
-					<td>laisser, quitter</td>
-				</tr>
-
-				<tr>
-					<td>lend</td>
-					<td>lent</td>
-					<td>lent</td>
-					<td>pr&ecirc;ter</td>
-				</tr>
-
-				<tr>
-					<td>let</td>
-					<td>let</td>
-					<td>let</td>
-					<td>permettre, louer</td>
-				</tr>
-
-				<tr>
-					<td>lie</td>
-					<td>lay</td>
-					<td>lain</td>
-					<td>&ecirc;tre &eacute;tendu</td>
-				</tr>
-
-				<tr>
-					<td>light</td>
-					<td>lit</td>
-					<td>lit</td>
-					<td>allumer</td>
-				</tr>
-
-				<tr>
-					<td>lose</td>
-					<td>lost</td>
-					<td>lost</td>
-					<td>perdre</td>
-				</tr>
-
-				<tr>
-					<td>make</td>
-					<td>made</td>
-					<td>made</td>
-					<td>faire, fabriquer</td>
-				</tr>
-
-				<tr>
-					<td>mean</td>
-					<td>meant</td>
-					<td>meant</td>
-					<td>signifier</td>
-				</tr>
-
-				<tr>
-					<td>meet</td>
-					<td>met</td>
-					<td>met</td>
-					<td>(se) rencontrer</td>
-				</tr>
-
-				<tr>
-					<td>mow</td>
-					<td>mowed</td>
-					<td>mown</td>
-					<td>tondre</td>
-				</tr>
-
-				<tr>
-					<td>overcome</td>
-					<td>overcame</td>
-					<td>overcome</td>
-					<td>surmonter, vaincre</td>
-				</tr>
-
-				<tr>
-					<td>pay</td>
-					<td>paid</td>
-					<td>paid</td>
-					<td>payer</td>
-				</tr>
-
-				<tr>
-					<td>put</td>
-					<td>put</td>
-					<td>put</td>
-					<td>mettre</td>
-				</tr>
-
-				<tr>
-					<td>quit</td>
-					<td>quit</td>
-					<td>quit</td>
-					<td>cesser (de)</td>
-				</tr>
-
-				<tr>
-					<td>read</td>
-					<td>read</td>
-					<td>read</td>
-					<td>lire</td>
-				</tr>
-
-				<tr>
-					<td>rid</td>
-					<td>rid</td>
-					<td>rid</td>
-					<td>d&eacute;barrasser</td>
-				</tr>
-
-				<tr>
-					<td>ride</td>
-					<td>rode</td>
-					<td>ridden</td>
-					<td>chevaucher</td>
-				</tr>
-
-				<tr>
-					<td>ring</td>
-					<td>rang</td>
-					<td>rung</td>
-					<td>sonner</td>
-				</tr>
-
-				<tr>
-					<td>rise</td>
-					<td>rose</td>
-					<td>risen</td>
-					<td>s'&eacute;lever, se lever</td>
-				</tr>
-
-				<tr>
-					<td>run</td>
-					<td>ran</td>
-					<td>run</td>
-					<td>courir</td>
-				</tr>
-
-				<tr>
-					<td>saw</td>
-					<td>sawed</td>
-					<td>sawn</td>
-					<td>scier</td>
-				</tr>
-
-				<tr>
-					<td>say</td>
-					<td>said</td>
-					<td>said</td>
-					<td>dire</td>
-				</tr>
-
-				<tr>
-					<td>see</td>
-					<td>saw</td>
-					<td>seen</td>
-					<td>voir</td>
-				</tr>
-
-				<tr>
-					<td>seek</td>
-					<td>sought</td>
-					<td>sought</td>
-					<td>chercher</td>
-				</tr>
-
-				<tr>
-					<td>sell</td>
-					<td>sold</td>
-					<td>sold</td>
-					<td>vendre</td>
-				</tr>
-
-				<tr>
-					<td>send</td>
-					<td>sent</td>
-					<td>sent</td>
-					<td>envoyer</td>
-				</tr>
-
-				<tr>
-					<td>set</td>
-					<td>set</td>
-					<td>set</td>
-					<td>fixer</td>
-				</tr>
-
-				<tr>
-					<td>sew</td>
-					<td>sewed</td>
-					<td>sewn</td>
-					<td>coudre</td>
-				</tr>
-
-				<tr>
-					<td>shake</td>
-					<td>shook</td>
-					<td>shaken</td>
-					<td>secouer</td>
-				</tr>
-
-				<tr>
-					<td>shear</td>
-					<td>sheared</td>
-					<td>shorn</td>
-					<td>tondre (des moutons)</td>
-				</tr>
-
-				<tr>
-					<td>shed</td>
-					<td>shed</td>
-					<td>shed</td>
-					<td>verser (des larmes)</td>
-				</tr>
-
-				<tr>
-					<td>shine</td>
-					<td>shone</td>
-					<td>shone</td>
-					<td>briller</td>
-				</tr>
-
-				<tr>
-					<td>shoe</td>
-					<td>shod</td>
-					<td>shod</td>
-					<td>ferrer, chausser</td>
-				</tr>
-
-				<tr>
-					<td>shoot</td>
-					<td>shot</td>
-					<td>shot</td>
-					<td>tirer</td>
-				</tr>
-
-				<tr>
-					<td>show</td>
-					<td>showed</td>
-					<td>shown</td>
-					<td>montrer</td>
-				</tr>
-
-				<tr>
-					<td>shrink</td>
-					<td>shrank</td>
-					<td>shrunk</td>
-					<td>r&eacute;tr&eacute;cir</td>
-				</tr>
-
-				<tr>
-					<td>shut</td>
-					<td>shut</td>
-					<td>shut</td>
-					<td>fermer</td>
-				</tr>
-
-				<tr>
-					<td>sing</td>
-					<td>sang</td>
-					<td>sung</td>
-					<td>chanter</td>
-				</tr>
-
-				<tr>
-					<td>sink</td>
-					<td>sank</td>
-					<td>sunk</td>
-					<td>couler</td>
-				</tr>
-
-				<tr>
-					<td>sit</td>
-					<td>sat</td>
-					<td>sat</td>
-					<td>&ecirc;tre assis</td>
-				</tr>
-
-				<tr>
-					<td>sleep</td>
-					<td>slept</td>
-					<td>slept</td>
-					<td>dormir</td>
-				</tr>
-
-				<tr>
-					<td>slide</td>
-					<td>slid</td>
-					<td>slid</td>
-					<td>glisser</td>
-				</tr>
-
-				<tr>
-					<td>sling</td>
-					<td>slung</td>
-					<td>slung</td>
-					<td>lancer (avec force)</td>
-				</tr>
-
-				<tr>
-					<td>slink</td>
-					<td>slunk</td>
-					<td>slunk</td>
-					<td>aller furtivement</td>
-				</tr>
-
-				<tr>
-					<td>slit</td>
-					<td>slit</td>
-					<td>slit</td>
-					<td>fendre, inciser</td>
-				</tr>
-
-				<tr>
-					<td>smell</td>
-					<td>smelt</td>
-					<td>smelt</td>
-					<td>sentir (odorat)</td>
-				</tr>
-
-				<tr>
-					<td>sow</td>
-					<td>sowed</td>
-					<td>sown</td>
-					<td>semer</td>
-				</tr>
-
-				<tr>
-					<td>speak</td>
-					<td>spoke</td>
-					<td>spoken</td>
-					<td>parler</td>
-				</tr>
-
-				<tr>
-					<td>speed</td>
-					<td>sped</td>
-					<td>sped</td>
-					<td>aller &agrave; toute vitesse</td>
-				</tr>
-
-				<tr>
-					<td>spell</td>
-					<td>spelt</td>
-					<td>spelt</td>
-					<td>&eacute;peler</td>
-				</tr>
-
-				<tr>
-					<td>spend</td>
-					<td>spent</td>
-					<td>spent</td>
-					<td>d&eacute;penser</td>
-				</tr>
-
-				<tr>
-					<td>spill</td>
-					<td>spilt</td>
-					<td>spilt</td>
-					<td>renverser (un liquide)</td>
-				</tr>
-
-				<tr>
-					<td>spit</td>
-					<td>spat</td>
-					<td>spat</td>
-					<td>cracher</td>
-				</tr>
-
-				<tr>
-					<td>split</td>
-					<td>split</td>
-					<td>split</td>
-					<td>fendre</td>
-				</tr>
-
-				<tr>
-					<td>spoil</td>
-					<td>spoilt</td>
-					<td>spoilt</td>
-					<td>g&acirc;cher, g&acirc;ter</td>
-				</tr>
-
-				<tr>
-					<td>spread</td>
-					<td>spread</td>
-					<td>spread</td>
-					<td>r&eacute;pandre</td>
-				</tr>
-
-				<tr>
-					<td>spring</td>
-					<td>sprang</td>
-					<td>sprung</td>
-					<td>jaillir, bondir</td>
-				</tr>
-
-				<tr>
-					<td>stand</td>
-					<td>stood</td>
-					<td>stood</td>
-					<td>&ecirc;tre debout</td>
-				</tr>
-
-				<tr>
-					<td>steal</td>
-					<td>stole</td>
-					<td>stolen</td>
-					<td>voler, d&eacute;rober</td>
-				</tr>
-
-				<tr>
-					<td>stick</td>
-					<td>stuck</td>
-					<td>stuck</td>
-					<td>coller</td>
-				</tr>
-
-				<tr>
-					<td>sting</td>
-					<td>stung</td>
-					<td>stung</td>
-					<td>piquer</td>
-				</tr>
-
-				<tr>
-					<td>stink</td>
-					<td>stank</td>
-					<td>stunk</td>
-					<td>puer</td>
-				</tr>
-
-				<tr>
-					<td>stride</td>
-					<td>strode</td>
-					<td>stridden</td>
-					<td>marcher &agrave; grands pas</td>
-				</tr>
-
-				<tr>
-					<td>strike</td>
-					<td>struck</td>
-					<td>struck</td>
-					<td>frapper</td>
-				</tr>
-
-				<tr>
-					<td>string</td>
-					<td>strung</td>
-					<td>strung</td>
-					<td>enfiler, tendre (une corde)</td>
-				</tr>
-
-				<tr>
-					<td>strive</td>
-					<td>strove</td>
-					<td>striven</td>
-					<td>s'efforcer</td>
-				</tr>
-
-				<tr>
-					<td>swear</td>
-					<td>swore</td>
-					<td>sworn</td>
-					<td>jurer</td>
-				</tr>
-
-				<tr>
-					<td>sweep</td>
-					<td>swept</td>
-					<td>swept</td>
-					<td>balayer</td>
-				</tr>
-
-				<tr>
-					<td>swell</td>
-					<td>swelled</td>
-					<td>swollen</td>
-					<td>enfler</td>
-				</tr>
-
-				<tr>
-					<td>swim</td>
-					<td>swam</td>
-					<td>swum</td>
-					<td>nager</td>
-				</tr>
-
-				<tr>
-					<td>swing</td>
-					<td>swung</td>
-					<td>swung</td>
-					<td>se balancer</td>
-				</tr>
-
-				<tr>
-					<td>take</td>
-					<td>took</td>
-					<td>taken</td>
-					<td>prendre</td>
-				</tr>
-
-				<tr>
-					<td>teach</td>
-					<td>taught</td>
-					<td>taught</td>
-					<td>enseigner</td>
-				</tr>
-
-				<tr>
-					<td>tear</td>
-					<td>tore</td>
-					<td>torn</td>
-					<td>d&eacute;chirer</td>
-				</tr>
-
-				<tr>
-					<td>tell</td>
-					<td>told</td>
-					<td>told</td>
-					<td>dire, raconter</td>
-				</tr>
-
-				<tr>
-					<td>think</td>
-					<td>thought</td>
-					<td>thought</td>
-					<td>penser</td>
-				</tr>
-
-				<tr>
-					<td>throw</td>
-					<td>threw</td>
-					<td>thrown</td>
-					<td>jeter</td>
-				</tr>
-
-				<tr>
-					<td>thrust</td>
-					<td>thrust</td>
-					<td>thrust</td>
-					<td>enfoncer</td>
-				</tr>
-
-				<tr>
-					<td>tread</td>
-					<td>trod</td>
-					<td>trodden</td>
-					<td>fouler aux pieds</td>
-				</tr>
-
-				<tr>
-					<td>undergo</td>
-					<td>underwent</td>
-					<td>undergone</td>
-					<td>subir</td>
-				</tr>
-
-				<tr>
-					<td>understand</td>
-					<td>understood</td>
-					<td>understood</td>
-					<td>comprendre</td>
-				</tr>
-
-				<tr>
-					<td>upset</td>
-					<td>upset</td>
-					<td>upset</td>
-					<td>bouleverser</td>
-				</tr>
-
-				<tr>
-					<td>wake</td>
-					<td>woke</td>
-					<td>woken</td>
-					<td>(se) r&eacute;veiller</td>
-				</tr>
-
-				<tr>
-					<td>wear</td>
-					<td>wore</td>
-					<td>worn</td>
-					<td>porter (des v&ecirc;tements)</td>
-				</tr>
-
-				<tr>
-					<td>weave</td>
-					<td>wove</td>
-					<td>woven</td>
-					<td>tisser</td>
-				</tr>
-
-				<tr>
-					<td>weep</td>
-					<td>wept</td>
-					<td>wept</td>
-					<td>pleurer</td>
-				</tr>
-
-				<tr>
-					<td>win</td>
-					<td>won</td>
-					<td>won</td>
-					<td>gagner</td>
-				</tr>
-
-				<tr>
-					<td>wind</td>
-					<td>wound</td>
-					<td>wound</td>
-					<td>enrouler</td>
-				</tr>
-
-				<tr>
-					<td>withdraw</td>
-					<td>withdrew</td>
-					<td>withdrawn</td>
-					<td>(se) retirer</td>
-				</tr>
-
-				<tr>
-					<td>wring</td>
-					<td>wrung</td>
-					<td>wrung</td>
-					<td>tordre</td>
-				</tr>
-
-				<tr>
-					<td>write</td>
-					<td>wrote</td>
-					<td>written</td>
-					<td>&eacute;crire</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<h1 class="font-bold text-[48px] p-4">Irregural verbs</h1>
+
+<Table source={table} />
+
+<div class="p-4">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Base verbale</th>
+				<th>Preterit</th>
+				<th>Participe passé</th>
+				<th>Traduction</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>abide</td>
+				<td>abode</td>
+				<td>abode</td>
+				<td>demeurer</td>
+			</tr>
+
+			<tr>
+				<td>arise</td>
+				<td>arose</td>
+				<td>arisen</td>
+				<td>s'&eacute;lever, survenir</td>
+			</tr>
+
+			<tr>
+				<td>awake</td>
+				<td>awoke</td>
+				<td>awoken</td>
+				<td>(se) r&eacute;veiller</td>
+			</tr>
+
+			<tr>
+				<td>bear</td>
+				<td>bore</td>
+				<td>borne</td>
+				<td>supporter</td>
+			</tr>
+
+			<tr>
+				<td>beat</td>
+				<td>beat</td>
+				<td>beaten</td>
+				<td>battre</td>
+			</tr>
+
+			<tr>
+				<td>become</td>
+				<td>became</td>
+				<td>become</td>
+				<td>devenir</td>
+			</tr>
+
+			<tr>
+				<td>begin</td>
+				<td>began</td>
+				<td>begun</td>
+				<td>commencer</td>
+			</tr>
+
+			<tr>
+				<td>bend</td>
+				<td>bent</td>
+				<td>bent</td>
+				<td>(se) courber</td>
+			</tr>
+
+			<tr>
+				<td>bet</td>
+				<td>bet</td>
+				<td>bet</td>
+				<td>parier</td>
+			</tr>
+
+			<tr>
+				<td>bid</td>
+				<td>bid</td>
+				<td>bid</td>
+				<td>offrir (un prix)</td>
+			</tr>
+
+			<tr>
+				<td>bind</td>
+				<td>bound</td>
+				<td>bound</td>
+				<td>lier, relier</td>
+			</tr>
+
+			<tr>
+				<td>bite</td>
+				<td>bit</td>
+				<td>bitten</td>
+				<td>mordre</td>
+			</tr>
+
+			<tr>
+				<td>bleed</td>
+				<td>bled</td>
+				<td>bled</td>
+				<td>saigner</td>
+			</tr>
+
+			<tr>
+				<td>blow</td>
+				<td>blew</td>
+				<td>blown</td>
+				<td>souffler</td>
+			</tr>
+
+			<tr>
+				<td>break</td>
+				<td>broke</td>
+				<td>broken</td>
+				<td>casser</td>
+			</tr>
+
+			<tr>
+				<td>breed</td>
+				<td>bred</td>
+				<td>bred</td>
+				<td>&eacute;lever (du b&eacute;tail)</td>
+			</tr>
+
+			<tr>
+				<td>bring</td>
+				<td>brought</td>
+				<td>brought</td>
+				<td>apporter</td>
+			</tr>
+
+			<tr>
+				<td>build</td>
+				<td>built</td>
+				<td>built</td>
+				<td>construire</td>
+			</tr>
+
+			<tr>
+				<td>burn</td>
+				<td>burnt</td>
+				<td>burnt</td>
+				<td>br&ucirc;ler</td>
+			</tr>
+
+			<tr>
+				<td>burst</td>
+				<td>burst</td>
+				<td>burst</td>
+				<td>&eacute;clater</td>
+			</tr>
+
+			<tr>
+				<td>buy</td>
+				<td>bought</td>
+				<td>bought</td>
+				<td>acheter</td>
+			</tr>
+
+			<tr>
+				<td>cast</td>
+				<td>cast</td>
+				<td>cast</td>
+				<td>jeter, lancer</td>
+			</tr>
+
+			<tr>
+				<td>catch</td>
+				<td>caught</td>
+				<td>caught</td>
+				<td>attraper</td>
+			</tr>
+
+			<tr>
+				<td>choose</td>
+				<td>chose</td>
+				<td>chosen</td>
+				<td>choisir</td>
+			</tr>
+
+			<tr>
+				<td>cling</td>
+				<td>clung</td>
+				<td>clung</td>
+				<td>s'accrocher</td>
+			</tr>
+
+			<tr>
+				<td>come</td>
+				<td>came</td>
+				<td>come</td>
+				<td>venir</td>
+			</tr>
+
+			<tr>
+				<td>cost</td>
+				<td>cost</td>
+				<td>cost</td>
+				<td>co&ucirc;ter</td>
+			</tr>
+
+			<tr>
+				<td>creep</td>
+				<td>crept</td>
+				<td>crept</td>
+				<td>ramper</td>
+			</tr>
+
+			<tr>
+				<td>cut</td>
+				<td>cut</td>
+				<td>cut</td>
+				<td>couper</td>
+			</tr>
+
+			<tr>
+				<td>deal</td>
+				<td>dealt</td>
+				<td>dealt</td>
+				<td>distribuer</td>
+			</tr>
+
+			<tr>
+				<td>dig</td>
+				<td>dug</td>
+				<td>dug</td>
+				<td>creuser</td>
+			</tr>
+
+			<tr>
+				<td>do</td>
+				<td>did</td>
+				<td>done</td>
+				<td>faire</td>
+			</tr>
+
+			<tr>
+				<td>draw</td>
+				<td>drew</td>
+				<td>drawn</td>
+				<td>dessiner</td>
+			</tr>
+
+			<tr>
+				<td>dream</td>
+				<td>dreamt</td>
+				<td>dreamt</td>
+				<td>r&ecirc;ver</td>
+			</tr>
+
+			<tr>
+				<td>drink</td>
+				<td>drank</td>
+				<td>drunk</td>
+				<td>boire</td>
+			</tr>
+
+			<tr>
+				<td>drive</td>
+				<td>drove</td>
+				<td>driven</td>
+				<td>conduire</td>
+			</tr>
+
+			<tr>
+				<td>dwell</td>
+				<td>dwelt</td>
+				<td>dwelt</td>
+				<td>habiter</td>
+			</tr>
+
+			<tr>
+				<td>eat</td>
+				<td>ate</td>
+				<td>eaten</td>
+				<td>manger</td>
+			</tr>
+
+			<tr>
+				<td>fall</td>
+				<td>fell</td>
+				<td>fallen</td>
+				<td>tomber</td>
+			</tr>
+
+			<tr>
+				<td>feed</td>
+				<td>fed</td>
+				<td>fed</td>
+				<td>nourrir</td>
+			</tr>
+
+			<tr>
+				<td>feel</td>
+				<td>felt</td>
+				<td>felt</td>
+				<td>sentir, &eacute;prouver</td>
+			</tr>
+
+			<tr>
+				<td>fight</td>
+				<td>fought</td>
+				<td>fought</td>
+				<td>combattre</td>
+			</tr>
+
+			<tr>
+				<td>find</td>
+				<td>found</td>
+				<td>found</td>
+				<td>trouver</td>
+			</tr>
+
+			<tr>
+				<td>flee</td>
+				<td>fled</td>
+				<td>fled</td>
+				<td>s'enfuir</td>
+			</tr>
+
+			<tr>
+				<td>fling</td>
+				<td>flung</td>
+				<td>flung</td>
+				<td>jeter violemment</td>
+			</tr>
+
+			<tr>
+				<td>fly</td>
+				<td>flew</td>
+				<td>flown</td>
+				<td>voler</td>
+			</tr>
+
+			<tr>
+				<td>forbid</td>
+				<td>forbade</td>
+				<td>forbidden</td>
+				<td>interdire</td>
+			</tr>
+
+			<tr>
+				<td>forget</td>
+				<td>forgot</td>
+				<td>forgotten</td>
+				<td>oublier</td>
+			</tr>
+
+			<tr>
+				<td>forgive</td>
+				<td>forgave</td>
+				<td>forgiven</td>
+				<td>pardonner</td>
+			</tr>
+
+			<tr>
+				<td>freeze</td>
+				<td>froze</td>
+				<td>frozen</td>
+				<td>geler</td>
+			</tr>
+
+			<tr>
+				<td>get</td>
+				<td>got</td>
+				<td>got</td>
+				<td>obtenir</td>
+			</tr>
+
+			<tr>
+				<td>give</td>
+				<td>gave</td>
+				<td>given</td>
+				<td>donner</td>
+			</tr>
+
+			<tr>
+				<td>go</td>
+				<td>went</td>
+				<td>gone</td>
+				<td>aller</td>
+			</tr>
+
+			<tr>
+				<td>grind</td>
+				<td>ground</td>
+				<td>ground</td>
+				<td>moudre</td>
+			</tr>
+
+			<tr>
+				<td>grow</td>
+				<td>grew</td>
+				<td>grown</td>
+				<td>grandir</td>
+			</tr>
+
+			<tr>
+				<td>hang</td>
+				<td>hung</td>
+				<td>hung</td>
+				<td>pendre, accrocher</td>
+			</tr>
+
+			<tr>
+				<td>have</td>
+				<td>had</td>
+				<td>had</td>
+				<td>avoir</td>
+			</tr>
+
+			<tr>
+				<td>hear</td>
+				<td>heard</td>
+				<td>heard</td>
+				<td>entendre</td>
+			</tr>
+
+			<tr>
+				<td>hide</td>
+				<td>hid</td>
+				<td>hidden</td>
+				<td>(se) cacher</td>
+			</tr>
+
+			<tr>
+				<td>hit</td>
+				<td>hit</td>
+				<td>hit</td>
+				<td>frapper, atteindre</td>
+			</tr>
+
+			<tr>
+				<td>hold</td>
+				<td>held</td>
+				<td>held</td>
+				<td>tenir</td>
+			</tr>
+
+			<tr>
+				<td>hurt</td>
+				<td>hurt</td>
+				<td>hurt</td>
+				<td>blesser</td>
+			</tr>
+
+			<tr>
+				<td>keep</td>
+				<td>kept</td>
+				<td>kept</td>
+				<td>garder</td>
+			</tr>
+
+			<tr>
+				<td>kneel</td>
+				<td>knelt</td>
+				<td>knelt</td>
+				<td>s'agenouiller</td>
+			</tr>
+
+			<tr>
+				<td>know</td>
+				<td>knew</td>
+				<td>known</td>
+				<td>savoir, conna&icirc;tre</td>
+			</tr>
+
+			<tr>
+				<td>lay</td>
+				<td>laid</td>
+				<td>laid</td>
+				<td>poser &agrave; plat</td>
+			</tr>
+
+			<tr>
+				<td>lead</td>
+				<td>led</td>
+				<td>led</td>
+				<td>mener</td>
+			</tr>
+
+			<tr>
+				<td>lean</td>
+				<td>leant</td>
+				<td>leant</td>
+				<td>s'appuyer</td>
+			</tr>
+
+			<tr>
+				<td>leap</td>
+				<td>leapt</td>
+				<td>leapt</td>
+				<td>sauter</td>
+			</tr>
+
+			<tr>
+				<td>learn</td>
+				<td>learnt</td>
+				<td>learnt</td>
+				<td>apprendre</td>
+			</tr>
+
+			<tr>
+				<td>leave</td>
+				<td>left</td>
+				<td>left</td>
+				<td>laisser, quitter</td>
+			</tr>
+
+			<tr>
+				<td>lend</td>
+				<td>lent</td>
+				<td>lent</td>
+				<td>pr&ecirc;ter</td>
+			</tr>
+
+			<tr>
+				<td>let</td>
+				<td>let</td>
+				<td>let</td>
+				<td>permettre, louer</td>
+			</tr>
+
+			<tr>
+				<td>lie</td>
+				<td>lay</td>
+				<td>lain</td>
+				<td>&ecirc;tre &eacute;tendu</td>
+			</tr>
+
+			<tr>
+				<td>light</td>
+				<td>lit</td>
+				<td>lit</td>
+				<td>allumer</td>
+			</tr>
+
+			<tr>
+				<td>lose</td>
+				<td>lost</td>
+				<td>lost</td>
+				<td>perdre</td>
+			</tr>
+
+			<tr>
+				<td>make</td>
+				<td>made</td>
+				<td>made</td>
+				<td>faire, fabriquer</td>
+			</tr>
+
+			<tr>
+				<td>mean</td>
+				<td>meant</td>
+				<td>meant</td>
+				<td>signifier</td>
+			</tr>
+
+			<tr>
+				<td>meet</td>
+				<td>met</td>
+				<td>met</td>
+				<td>(se) rencontrer</td>
+			</tr>
+
+			<tr>
+				<td>mow</td>
+				<td>mowed</td>
+				<td>mown</td>
+				<td>tondre</td>
+			</tr>
+
+			<tr>
+				<td>overcome</td>
+				<td>overcame</td>
+				<td>overcome</td>
+				<td>surmonter, vaincre</td>
+			</tr>
+
+			<tr>
+				<td>pay</td>
+				<td>paid</td>
+				<td>paid</td>
+				<td>payer</td>
+			</tr>
+
+			<tr>
+				<td>put</td>
+				<td>put</td>
+				<td>put</td>
+				<td>mettre</td>
+			</tr>
+
+			<tr>
+				<td>quit</td>
+				<td>quit</td>
+				<td>quit</td>
+				<td>cesser (de)</td>
+			</tr>
+
+			<tr>
+				<td>read</td>
+				<td>read</td>
+				<td>read</td>
+				<td>lire</td>
+			</tr>
+
+			<tr>
+				<td>rid</td>
+				<td>rid</td>
+				<td>rid</td>
+				<td>d&eacute;barrasser</td>
+			</tr>
+
+			<tr>
+				<td>ride</td>
+				<td>rode</td>
+				<td>ridden</td>
+				<td>chevaucher</td>
+			</tr>
+
+			<tr>
+				<td>ring</td>
+				<td>rang</td>
+				<td>rung</td>
+				<td>sonner</td>
+			</tr>
+
+			<tr>
+				<td>rise</td>
+				<td>rose</td>
+				<td>risen</td>
+				<td>s'&eacute;lever, se lever</td>
+			</tr>
+
+			<tr>
+				<td>run</td>
+				<td>ran</td>
+				<td>run</td>
+				<td>courir</td>
+			</tr>
+
+			<tr>
+				<td>saw</td>
+				<td>sawed</td>
+				<td>sawn</td>
+				<td>scier</td>
+			</tr>
+
+			<tr>
+				<td>say</td>
+				<td>said</td>
+				<td>said</td>
+				<td>dire</td>
+			</tr>
+
+			<tr>
+				<td>see</td>
+				<td>saw</td>
+				<td>seen</td>
+				<td>voir</td>
+			</tr>
+
+			<tr>
+				<td>seek</td>
+				<td>sought</td>
+				<td>sought</td>
+				<td>chercher</td>
+			</tr>
+
+			<tr>
+				<td>sell</td>
+				<td>sold</td>
+				<td>sold</td>
+				<td>vendre</td>
+			</tr>
+
+			<tr>
+				<td>send</td>
+				<td>sent</td>
+				<td>sent</td>
+				<td>envoyer</td>
+			</tr>
+
+			<tr>
+				<td>set</td>
+				<td>set</td>
+				<td>set</td>
+				<td>fixer</td>
+			</tr>
+
+			<tr>
+				<td>sew</td>
+				<td>sewed</td>
+				<td>sewn</td>
+				<td>coudre</td>
+			</tr>
+
+			<tr>
+				<td>shake</td>
+				<td>shook</td>
+				<td>shaken</td>
+				<td>secouer</td>
+			</tr>
+
+			<tr>
+				<td>shear</td>
+				<td>sheared</td>
+				<td>shorn</td>
+				<td>tondre (des moutons)</td>
+			</tr>
+
+			<tr>
+				<td>shed</td>
+				<td>shed</td>
+				<td>shed</td>
+				<td>verser (des larmes)</td>
+			</tr>
+
+			<tr>
+				<td>shine</td>
+				<td>shone</td>
+				<td>shone</td>
+				<td>briller</td>
+			</tr>
+
+			<tr>
+				<td>shoe</td>
+				<td>shod</td>
+				<td>shod</td>
+				<td>ferrer, chausser</td>
+			</tr>
+
+			<tr>
+				<td>shoot</td>
+				<td>shot</td>
+				<td>shot</td>
+				<td>tirer</td>
+			</tr>
+
+			<tr>
+				<td>show</td>
+				<td>showed</td>
+				<td>shown</td>
+				<td>montrer</td>
+			</tr>
+
+			<tr>
+				<td>shrink</td>
+				<td>shrank</td>
+				<td>shrunk</td>
+				<td>r&eacute;tr&eacute;cir</td>
+			</tr>
+
+			<tr>
+				<td>shut</td>
+				<td>shut</td>
+				<td>shut</td>
+				<td>fermer</td>
+			</tr>
+
+			<tr>
+				<td>sing</td>
+				<td>sang</td>
+				<td>sung</td>
+				<td>chanter</td>
+			</tr>
+
+			<tr>
+				<td>sink</td>
+				<td>sank</td>
+				<td>sunk</td>
+				<td>couler</td>
+			</tr>
+
+			<tr>
+				<td>sit</td>
+				<td>sat</td>
+				<td>sat</td>
+				<td>&ecirc;tre assis</td>
+			</tr>
+
+			<tr>
+				<td>sleep</td>
+				<td>slept</td>
+				<td>slept</td>
+				<td>dormir</td>
+			</tr>
+
+			<tr>
+				<td>slide</td>
+				<td>slid</td>
+				<td>slid</td>
+				<td>glisser</td>
+			</tr>
+
+			<tr>
+				<td>sling</td>
+				<td>slung</td>
+				<td>slung</td>
+				<td>lancer (avec force)</td>
+			</tr>
+
+			<tr>
+				<td>slink</td>
+				<td>slunk</td>
+				<td>slunk</td>
+				<td>aller furtivement</td>
+			</tr>
+
+			<tr>
+				<td>slit</td>
+				<td>slit</td>
+				<td>slit</td>
+				<td>fendre, inciser</td>
+			</tr>
+
+			<tr>
+				<td>smell</td>
+				<td>smelt</td>
+				<td>smelt</td>
+				<td>sentir (odorat)</td>
+			</tr>
+
+			<tr>
+				<td>sow</td>
+				<td>sowed</td>
+				<td>sown</td>
+				<td>semer</td>
+			</tr>
+
+			<tr>
+				<td>speak</td>
+				<td>spoke</td>
+				<td>spoken</td>
+				<td>parler</td>
+			</tr>
+
+			<tr>
+				<td>speed</td>
+				<td>sped</td>
+				<td>sped</td>
+				<td>aller &agrave; toute vitesse</td>
+			</tr>
+
+			<tr>
+				<td>spell</td>
+				<td>spelt</td>
+				<td>spelt</td>
+				<td>&eacute;peler</td>
+			</tr>
+
+			<tr>
+				<td>spend</td>
+				<td>spent</td>
+				<td>spent</td>
+				<td>d&eacute;penser</td>
+			</tr>
+
+			<tr>
+				<td>spill</td>
+				<td>spilt</td>
+				<td>spilt</td>
+				<td>renverser (un liquide)</td>
+			</tr>
+
+			<tr>
+				<td>spit</td>
+				<td>spat</td>
+				<td>spat</td>
+				<td>cracher</td>
+			</tr>
+
+			<tr>
+				<td>split</td>
+				<td>split</td>
+				<td>split</td>
+				<td>fendre</td>
+			</tr>
+
+			<tr>
+				<td>spoil</td>
+				<td>spoilt</td>
+				<td>spoilt</td>
+				<td>g&acirc;cher, g&acirc;ter</td>
+			</tr>
+
+			<tr>
+				<td>spread</td>
+				<td>spread</td>
+				<td>spread</td>
+				<td>r&eacute;pandre</td>
+			</tr>
+
+			<tr>
+				<td>spring</td>
+				<td>sprang</td>
+				<td>sprung</td>
+				<td>jaillir, bondir</td>
+			</tr>
+
+			<tr>
+				<td>stand</td>
+				<td>stood</td>
+				<td>stood</td>
+				<td>&ecirc;tre debout</td>
+			</tr>
+
+			<tr>
+				<td>steal</td>
+				<td>stole</td>
+				<td>stolen</td>
+				<td>voler, d&eacute;rober</td>
+			</tr>
+
+			<tr>
+				<td>stick</td>
+				<td>stuck</td>
+				<td>stuck</td>
+				<td>coller</td>
+			</tr>
+
+			<tr>
+				<td>sting</td>
+				<td>stung</td>
+				<td>stung</td>
+				<td>piquer</td>
+			</tr>
+
+			<tr>
+				<td>stink</td>
+				<td>stank</td>
+				<td>stunk</td>
+				<td>puer</td>
+			</tr>
+
+			<tr>
+				<td>stride</td>
+				<td>strode</td>
+				<td>stridden</td>
+				<td>marcher &agrave; grands pas</td>
+			</tr>
+
+			<tr>
+				<td>strike</td>
+				<td>struck</td>
+				<td>struck</td>
+				<td>frapper</td>
+			</tr>
+
+			<tr>
+				<td>string</td>
+				<td>strung</td>
+				<td>strung</td>
+				<td>enfiler, tendre (une corde)</td>
+			</tr>
+
+			<tr>
+				<td>strive</td>
+				<td>strove</td>
+				<td>striven</td>
+				<td>s'efforcer</td>
+			</tr>
+
+			<tr>
+				<td>swear</td>
+				<td>swore</td>
+				<td>sworn</td>
+				<td>jurer</td>
+			</tr>
+
+			<tr>
+				<td>sweep</td>
+				<td>swept</td>
+				<td>swept</td>
+				<td>balayer</td>
+			</tr>
+
+			<tr>
+				<td>swell</td>
+				<td>swelled</td>
+				<td>swollen</td>
+				<td>enfler</td>
+			</tr>
+
+			<tr>
+				<td>swim</td>
+				<td>swam</td>
+				<td>swum</td>
+				<td>nager</td>
+			</tr>
+
+			<tr>
+				<td>swing</td>
+				<td>swung</td>
+				<td>swung</td>
+				<td>se balancer</td>
+			</tr>
+
+			<tr>
+				<td>take</td>
+				<td>took</td>
+				<td>taken</td>
+				<td>prendre</td>
+			</tr>
+
+			<tr>
+				<td>teach</td>
+				<td>taught</td>
+				<td>taught</td>
+				<td>enseigner</td>
+			</tr>
+
+			<tr>
+				<td>tear</td>
+				<td>tore</td>
+				<td>torn</td>
+				<td>d&eacute;chirer</td>
+			</tr>
+
+			<tr>
+				<td>tell</td>
+				<td>told</td>
+				<td>told</td>
+				<td>dire, raconter</td>
+			</tr>
+
+			<tr>
+				<td>think</td>
+				<td>thought</td>
+				<td>thought</td>
+				<td>penser</td>
+			</tr>
+
+			<tr>
+				<td>throw</td>
+				<td>threw</td>
+				<td>thrown</td>
+				<td>jeter</td>
+			</tr>
+
+			<tr>
+				<td>thrust</td>
+				<td>thrust</td>
+				<td>thrust</td>
+				<td>enfoncer</td>
+			</tr>
+
+			<tr>
+				<td>tread</td>
+				<td>trod</td>
+				<td>trodden</td>
+				<td>fouler aux pieds</td>
+			</tr>
+
+			<tr>
+				<td>undergo</td>
+				<td>underwent</td>
+				<td>undergone</td>
+				<td>subir</td>
+			</tr>
+
+			<tr>
+				<td>understand</td>
+				<td>understood</td>
+				<td>understood</td>
+				<td>comprendre</td>
+			</tr>
+
+			<tr>
+				<td>upset</td>
+				<td>upset</td>
+				<td>upset</td>
+				<td>bouleverser</td>
+			</tr>
+
+			<tr>
+				<td>wake</td>
+				<td>woke</td>
+				<td>woken</td>
+				<td>(se) r&eacute;veiller</td>
+			</tr>
+
+			<tr>
+				<td>wear</td>
+				<td>wore</td>
+				<td>worn</td>
+				<td>porter (des v&ecirc;tements)</td>
+			</tr>
+
+			<tr>
+				<td>weave</td>
+				<td>wove</td>
+				<td>woven</td>
+				<td>tisser</td>
+			</tr>
+
+			<tr>
+				<td>weep</td>
+				<td>wept</td>
+				<td>wept</td>
+				<td>pleurer</td>
+			</tr>
+
+			<tr>
+				<td>win</td>
+				<td>won</td>
+				<td>won</td>
+				<td>gagner</td>
+			</tr>
+
+			<tr>
+				<td>wind</td>
+				<td>wound</td>
+				<td>wound</td>
+				<td>enrouler</td>
+			</tr>
+
+			<tr>
+				<td>withdraw</td>
+				<td>withdrew</td>
+				<td>withdrawn</td>
+				<td>(se) retirer</td>
+			</tr>
+
+			<tr>
+				<td>wring</td>
+				<td>wrung</td>
+				<td>wrung</td>
+				<td>tordre</td>
+			</tr>
+
+			<tr>
+				<td>write</td>
+				<td>wrote</td>
+				<td>written</td>
+				<td>&eacute;crire</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

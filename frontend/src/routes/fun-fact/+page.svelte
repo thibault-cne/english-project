@@ -6,9 +6,10 @@
 
 	onMount(() => {
 		fetch(env.backendUrl + '/fun-fact', {
+			credentials: 'same-origin',
+			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': 'http://localhost:5173'
+				'Content-Type': 'application/json'
 			}
 		})
 			.then((res) => res.json())
@@ -22,8 +23,6 @@
 	<title>Fun fact</title>
 </svelte:head>
 
-<div class="p-10">
-	<h1 class="p-4 font-bold text-[48px]">Here is an english fun fact:</h1>
+<h1 class="p-4 font-bold text-[48px]">Here is an english fun fact:</h1>
 
-	<span class="text-[16px] mt-4">{funfact}</span>
-</div>
+<span class="text-[16px] mt-4">{funfact}</span>

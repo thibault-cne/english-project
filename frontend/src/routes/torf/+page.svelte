@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { env } from '$lib/env';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
 	let words = {
 		eng: '',
 		french: ''
 	};
-	let playing = true;
-	let won = false;
 
 	onMount(() => {
 		refresh();
@@ -33,12 +33,17 @@
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				playing = false;
-				won = data.status === 'won' ? true : false;
+				const t: ToastSettings = {
+					message: data.status === 'won' ? 'You won!' : 'You lost!',
+					classes: 'toast-center toast-bottom w-64 mb-10',
+					background: data.status === 'won' ? 'bg-success-700' : 'variant-filled-error',
+					timeout: 5000
+				};
+				toastStore.trigger(t);
+
 				setTimeout(() => {
 					refresh();
-					playing = true;
-				}, 1000);
+				}, 5000);
 			});
 	}
 </script>
@@ -47,29 +52,23 @@
 	<title>True or false</title>
 </svelte:head>
 
-<div class="p-10 flex flex-col">
-	<h1 class="text-[32px]">Does the word {words.eng} is the english of {words.french} ?</h1>
+<div class="flex flex-col">
+	<h1 class="text-[24px]">Does the word {words.eng} is the english of {words.french} ?</h1>
 
-	<div class="flex self-center w-full justify-evenly mt-10">
+	<div class="flex self-center w-full justify-evenly mt-10 p-4">
 		<button
-			class="btn btn-primary btn-wide"
+			class="btn bg-primary-500 btn-lg"
 			on:click={() => {
 				post('True');
 			}}>True</button
 		>
 		<button
-			class="btn btn-primary btn-wide"
+			class="btn bg-primary-500 btn-lg"
 			on:click={() => {
 				post('False');
 			}}>False</button
 		>
 	</div>
-
-	{#if !playing}
-		{#if won}
-			<div>Won!</div>
-		{:else}
-			<div>Lost!</div>
-		{/if}
-	{/if}
 </div>
+
+<Toast position="b" />
