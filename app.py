@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session
+from flask import Flask, render_template, redirect, session, request
 from flask_cors import CORS
 import random as rd
 from flask_session import *
@@ -12,12 +12,18 @@ fun_fact = []
 
 with open("static/words") as f:
     en_words = f.readlines()
+    for i in range(len(en_words)):
+        en_words[i] = en_words[i].rstrip()
 
 with open("static/words_fr") as f:
     fr_words = f.readlines()
+    for i in range(len(fr_words)):
+        fr_words[i] = fr_words[i].rstrip()
 
 with open("static/fun_facts") as f:
     fun_facts = f.readlines()
+    for i in range(len(fun_facts)):
+        fun_facts[i] = fun_facts[i].rstrip()
 
 
 current_TORF = False
@@ -175,6 +181,35 @@ def TORF_EXAM_RESULT():
     session["total"] = 0
 
     return {"status": "end", "score": s, "total": t}
+
+@app.route("/disorder")
+def disorder():
+    i = rd.randint(0, len(en_words)-1)
+
+    session["disorder"] = i
+
+    en_words_disorder = (en_words[i])
+    tmp = []
+    for el in en_words_disorder:
+        tmp.append(el)
+
+    rd.shuffle(tmp)
+
+    en_words_disorder = ""
+    for el in tmp:
+        en_words_disorder += el
+
+    return render_template('disordered.html', permutated_word=en_words_disorder)
+
+@app.route("/verif_word")
+def verif_word():
+    word = request.args.get("word")
+    print(word)
+    print(en_words[session["disorder"]])
+    if word == en_words[session["disorder"]]:
+        return "you won"
+    else:
+        return "you lost"
 
 
 ### TODO : QCM choisir 4 mots.

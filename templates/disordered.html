@@ -1,0 +1,16 @@
+{% extends 'layout.html' %} 
+
+{% block title %} EnglishHub {% endblock %}
+    
+    
+{% block body %}
+
+    <h1>{{ permutated_word }}</h1>
+
+    <form action="/verif_word">
+        <input type="text" name="word">
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %} 
+
