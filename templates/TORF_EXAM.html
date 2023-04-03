@@ -4,14 +4,17 @@
     
     
 {% block body %}
+    <h1>
+        {{total + 1}} / 10
+    </h1>
 
     <h1> {{message}} </h1>
 
-    <form action="/TORF_True">
+    <form action="/TORF_EXAM_True">
         <button type="submit">True</button>
     </form>
 
-    <form action="/TORF_False">
+    <form action="/TORF_EXAM_False">
         <button type="submit">False</button>
     </form>
 

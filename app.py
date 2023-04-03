@@ -114,7 +114,94 @@ def after_request(response):
   return response
     
 
+
+
+
+@app.route("/TORF_EXAM")
+def TORF_EXAM():
+    i = rd.randint(0, len(en_words)-1)
+
+    if not session.get("message") or session["message"][-1] != "\n":
+        session["message"] = ""
+
+    if not session.get("score"):
+        session["score"] = 0
+
+    if not session.get("total"):
+        session["total"] = 0
+
+    e = rd.randint(0, 1)
+    n = rd.randint(0, 1)
+    if n == 0:
+        global current_TORF
+        current_TORF = True
+        en_word = en_words[i]
+        fr_word = fr_words[i]
+        if (e==1):
+            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
+        else:
+            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
+        return render_template('TORF_EXAM.html', en_word=en_word, fr_word=fr_word, e=e, message=session["message"], score=session["score"], total=session["total"])
+    else:
+        current_TORF = False
+        j = rd.randint(0, len(en_words)-1)
+        while j == i:
+            j = rd.randint(0, len(en_words)-1)
+        en_word = en_words[j]   
+        fr_word = fr_words[i]
+        if (e==1):
+            session["message"] += "Does the word " + en_word  + "is the english of " + fr_word + " ?"
+        else:
+            session["message"] += "Does the word " + fr_word  + "is the french of " + en_word + " ?"
+        
+        return render_template('TORF_EXAM.html', en_word=fr_word, fr_word=en_word, e=e, message=session["message"], score=session["score"], total=session["total"])
+    
+
+@app.route("/TORF_EXAM_True")
+def TORF_EXAM_True():
+    session["total"] += 1
+    if current_TORF:
+        session["message"] = "You won ! \n"
+        session["score"] += 1
+        if session["total"] == 10:
+            return redirect("/TORF_EXAM_END")
+
+        return redirect("/TORF_EXAM")    
+    else:
+        session["message"] = "You lost ! \n"
+        if session["total"] == 10:
+            return redirect("/TORF_EXAM_END")
+        return redirect("/TORF_EXAM")   
+    
+@app.route("/TORF_EXAM_False")
+def TORF_EXAM_False():
+    session["total"] += 1
+    if current_TORF:
+        session["message"] = "You lost ! \n"
+        if session["total"] == 10:
+            return redirect("/TORF_EXAM_END")
+        return redirect("/TORF_EXAM")   
+    else:
+        session["message"] = "You won ! \n"
+        session["score"] += 1
+        if session["total"] == 10:
+            return redirect("/TORF_EXAM_END")
+        return redirect("/TORF_EXAM")   
+    
+@app.route("/TORF_EXAM_END")
+def TORF_EXAM_RESULT():
+    s = session["score"]
+    t = session["total"]
+    session["score"] = 0
+    session["total"] = 0
+
+    return render_template('score.html', score=s, total=t)
+
+
+
 ### TODO : QCM choisir 4 mots.
+
+
 
     
 if __name__ == "__main__":
