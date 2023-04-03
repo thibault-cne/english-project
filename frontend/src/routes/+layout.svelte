@@ -45,6 +45,7 @@
 				<ul class="menu menu-horizontal px-1">
 					<li><a href="/fun-fact" class="unstyled btn btn-ghost">Fun fact</a></li>
 					<li><a href="/scramble" class="unstyled btn btn-ghost">Scramble</a></li>
+					<li><a href="/qcm" class="unstyled btn btn-ghost">QCM</a></li>
 					<li tabindex="-1" class="font-semibold">
 						<span>
 							True or false

@@ -231,16 +231,16 @@ def QCM():
 
     rd.shuffle(fr_list)
 
-    return render_template("QCM.html", fr_list=fr_list, en_word = en_words[i])
+    return {"fr_list": fr_list, "en_word": en_words[i]}
 
 
 @app.route("/verif_QCM")
 def verif_QCM():
     word = request.args.get("word")
     if word==fr_words[session["QCM"]]:
-        return "you won !"
+        return {"status": "won"}
     else:
-        return "you lost !"
+        return {"status": "lost"}
     
 if __name__ == "__main__":
     app.run(debug = True, port=5454)
