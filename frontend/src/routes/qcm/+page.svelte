@@ -2,32 +2,32 @@
 	import { onMount } from 'svelte';
 	import { env } from '$lib/env';
 	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
+	import Tts from '$lib/components/TTS.svelte';
 
 	let guess: string;
 	let words: [string, string, string, string];
 	let page_loading = true;
 	let loading = false;
 
-	onMount(() => {
-		init();
+	onMount(async () => {
+		await init();
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+		page_loading = false;
 	});
 
-	function init() {
+	async function init() {
 		const url = `${env.backendUrl}/QCM`;
 
-		fetch(url, {
+		let rep = await fetch(url, {
 			credentials: 'include',
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				words = data.fr_list;
-				guess = data.en_word;
-				page_loading = false;
-			});
+		});
+		let json = await rep.json();
+		words = json.fr_list;
+		guess = json.en_word;
 	}
 
 	function guess_word(word: string) {
@@ -37,6 +37,7 @@
 				word: word
 			});
 		loading = true;
+		page_loading = true;
 
 		fetch(url, {
 			credentials: 'include',
@@ -58,6 +59,7 @@
 				setTimeout(() => {
 					init();
 					loading = false;
+					page_loading = false;
 				}, 3000);
 			});
 	}
@@ -67,10 +69,22 @@
 	<title>QCM</title>
 </svelte:head>
 
-{#if !page_loading}
+{#if page_loading}
+	<section class="flex flex-col justify-center w-full h-full">
+		<div class="placeholder animate-pulse py-6 w-1/2 self-center" />
+		<div class="grid grid-cols-2 gap-4 place-content-evenly place-items-center mt-10">
+			<div class="placeholder w-28 animate-pulse py-8" />
+			<div class="placeholder w-28 animate-pulse py-8" />
+			<div class="placeholder w-28 animate-pulse py-8" />
+			<div class="placeholder w-28 animate-pulse py-8" />
+		</div>
+	</section>
+{:else}
 	<div class="flex flex-col w-full h-full justify-center items-center">
 		<h1 class="text-[24px]">
-			What is the french of <span class="text-primary-600 lowercase">{guess}</span> ?
+			What is the french of <span class="text-primary-600 lowercase relative mr-5"
+				>{guess}<span class="absolute w-5 h-5 top-2"><Tts text={guess} /></span></span
+			> ?
 		</h1>
 		<div class="grid grid-cols-2 mt-10 w-2/3 gap-y-6 gap-x-4 self-center">
 			<button
