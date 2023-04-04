@@ -30,6 +30,22 @@
 		{
 			href: '/lessons/06',
 			title: 'Lesson - 06'
+		},
+		{
+			href: '/lessons/07',
+			title: 'Lesson - 07'
+		},
+		{
+			href: '/lessons/08',
+			title: 'Lesson - 08'
+		},
+		{
+			href: '/lessons/09',
+			title: 'Lesson - 09'
+		},
+		{
+			href: '/lessons/10',
+			title: 'Lesson - 10'
 		}
 	];
 </script>

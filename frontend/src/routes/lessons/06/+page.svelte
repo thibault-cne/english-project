@@ -31,4 +31,4 @@
 	tired.
 </p>
 
-<LessonFooter previous="/lessons/05" next="/lessons/06" />
+<LessonFooter previous="/lessons/05" next="/lessons/07" />
