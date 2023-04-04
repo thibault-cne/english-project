@@ -13,6 +13,7 @@
 		lost: 0
 	};
 	let end = false;
+	let answers: { message: string; answer: boolean }[] = [];
 
 	onMount(async () => {
 		await init();
@@ -31,11 +32,18 @@
 			}
 		});
 		let json = await rep.json();
-		words = json.fr_list;
-		guess = json.en_word;
+
+		if (json.status === 'end') {
+			score.won = json.score;
+			score.lost = json.total - json.score;
+			end = true;
+		} else {
+			words = json.fr_list;
+			guess = json.en_word;
+		}
 	}
 
-	function guess_word(word: string) {
+	async function guess_word(word: string) {
 		let url =
 			`${env.backendUrl}/verif_QCM_EXAM?` +
 			new URLSearchParams({
@@ -44,28 +52,38 @@
 		loading = true;
 		page_loading = true;
 
-		fetch(url, {
+		let rep = await fetch(url, {
 			credentials: 'include',
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		})
-			.then((res) => res.json())
-			.then(async (json) => {
-				if (json.status === 'end') {
-					score.won = json.score;
-					score.lost = json.total - json.score;
-					end = true;
-				} else {
-					words = json.fr_list;
-					guess = json.en_word;
-				}
+		});
 
-				await new Promise((resolve) => setTimeout(resolve, 1000));
-				loading = false;
-				page_loading = false;
-			});
+		let json = await rep.json();
+		let answer = json.answer === 'true' ? true : false;
+		let message = 'The english word for ' + json.fr_word + ' is ' + json.en_word + '.';
+
+		answers.push({
+			message: message,
+			answer: answer
+		});
+
+		const t: ToastSettings = {
+			message: 'Next question',
+			classes: 'toast-center toast-bottom w-64 mb-10',
+			background: 'bg-success-700',
+			timeout: 1500
+		};
+		toastStore.trigger(t);
+
+		await init();
+
+		await new Promise((resolve) => setTimeout(resolve, 1500));
+
+		toastStore.clear();
+		loading = false;
+		page_loading = false;
 	}
 </script>
 
@@ -86,7 +104,7 @@
 {:else if !end}
 	<div class="flex flex-col w-full h-full justify-center items-center">
 		<h1 class="text-[24px]">
-			What is the french of <span class="text-primary-600 lowercase relative mr-5"
+			What is the french for <span class="text-primary-600 lowercase relative mr-5"
 				>{guess}<span class="absolute w-5 h-5 top-2"><Tts text={guess} /></span></span
 			> ?
 		</h1>
@@ -121,10 +139,35 @@
 			>
 		</div>
 	</div>
-{:else if end}
+{:else}
 	<div class="flex flex-col w-full h-full justify-center items-center">
 		<h1 class="text-[24px]">You finished the exam!</h1>
 		<h2 class="text-[16px] mt-4 ml-4">You won {score.won} and lost {score.lost} rounds</h2>
+
+		<div class="flex flex-col justify-start gap-4 mt-4 mb-2">
+			{#each answers as answer}
+				<div class="flex">
+					<span class="w-5 h-5 mr-5">
+						{#if answer.answer}
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fill-green-600"
+								><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+									d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+								/></svg
+							>
+						{:else}
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-red-600"
+								><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+									d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+								/></svg
+							>
+						{/if}
+					</span>
+					<span>
+						{answer.message}
+					</span>
+				</div>
+			{/each}
+		</div>
 
 		<button
 			class="btn bg-primary-500 btn-lg mt-10"

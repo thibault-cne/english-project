@@ -138,7 +138,7 @@
 			<h1 class="text-[24px]">You finished the exam!</h1>
 			<h2 class="text-[16px] mt-4 ml-4">You won {score.won} rounds and lost {score.lost} rounds</h2>
 
-			<div class="flex flex-col justify-start gap-4 my-8">
+			<div class="flex flex-col justify-start gap-4 mt-4 mb-2">
 				{#each answers as answer}
 					<div class="flex">
 						<span class="w-5 h-5 mr-5">

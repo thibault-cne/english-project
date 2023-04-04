@@ -89,7 +89,7 @@ def TORF():
         current_TORF = True
         en_word = en_words[i]
         fr_word = fr_words[i]
-        return {"en_word":en_word, "fr_word":fr_word, "real_answer":fr_word}
+        return {"en_word":en_word, "fr_word":fr_word, "real_answer":en_word}
     else:
         current_TORF = False
         j = rd.randint(0, len(en_words)-1)
@@ -97,7 +97,7 @@ def TORF():
             j = rd.randint(0, len(en_words)-1)
         en_word = en_words[j]   
         fr_word = fr_words[i]
-        return {"en_word":en_word, "fr_word":fr_word, "real_answer":fr_words[i]}
+        return {"en_word":en_word, "fr_word":fr_word, "real_answer":en_words[i]}
     
 
 
@@ -288,7 +288,7 @@ def QCM_EXAM_END():
     session["score_QCM"] = 0
     session["total_QCM"] = 0
 
-    return {"status": "end", "score_QCM": s, "total_QCM": t}
+    return {"status": "end", "score": s, "total": t}
 
 
 if __name__ == "__main__":

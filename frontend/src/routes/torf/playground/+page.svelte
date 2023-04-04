@@ -7,7 +7,8 @@
 
 	let words = {
 		eng: '',
-		french: ''
+		french: '',
+		real: ''
 	};
 	let loading = true;
 
@@ -25,6 +26,7 @@
 		let json = await rep.json();
 		words.eng = json.en_word;
 		words.french = json.fr_word;
+		words.real = json.real_answer;
 	}
 
 	function post(type: string) {
@@ -39,11 +41,14 @@
 			}
 		})
 			.then((res) => res.json())
-			.then((data) => {
+			.then((json) => {
 				const t: ToastSettings = {
-					message: data.status === 'won' ? 'You won!' : 'You lost!',
+					message:
+						json.status === 'won'
+							? 'You won!'
+							: 'You lost, the real answer was : ' + words.real + '.',
 					classes: 'toast-center toast-bottom w-64 mb-10',
-					background: data.status === 'won' ? 'bg-success-700' : 'variant-filled-error',
+					background: json.status === 'won' ? 'bg-success-700' : 'variant-filled-error',
 					timeout: 3000
 				};
 				toastStore.trigger(t);
