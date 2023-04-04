@@ -17,6 +17,7 @@
 		won: 0,
 		lost: 0
 	};
+	let answers: { message: string; answer: boolean }[] = [];
 
 	onMount(async () => {
 		await init();
@@ -29,45 +30,56 @@
 			credentials: 'include'
 		});
 		let json = await rep.json();
-		words.eng = json.en_word;
-		words.french = json.fr_word;
-		words.order = json.e === 0 ? true : false;
+
+		if (json.status === 'end') {
+			end = true;
+			score.won = json.score;
+			score.lost = json.total - json.score;
+		} else {
+			words.eng = json.en_word;
+			words.french = json.fr_word;
+			words.order = json.e === 0 ? true : false;
+		}
 	}
 
-	function post(type: string) {
+	async function post(type: string) {
 		const url = `${env.backendUrl}/TORF_EXAM_${type}`;
 		loading = true;
+		page_loading = true;
 
-		fetch(url, {
+		let rep = await fetch(url, {
 			method: 'GET',
 			credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				const t: ToastSettings = {
-					message: 'Next question',
-					classes: 'toast-center toast-bottom w-64 mb-10',
-					background: 'bg-success-700',
-					timeout: 3000
-				};
-				toastStore.trigger(t);
+		});
+		let json = await rep.json();
+		const t: ToastSettings = {
+			message: 'Next question',
+			classes: 'toast-center toast-bottom w-64 mb-10',
+			background: 'bg-success-700',
+			timeout: 3000
+		};
+		toastStore.trigger(t);
 
-				setTimeout(() => {
-					if (data.status === 'end') {
-						end = true;
-						score.won = data.score;
-						score.lost = data.total - data.score;
-					} else {
-						words.eng = data.en_word;
-						words.french = data.fr_word;
-						words.order = data.e === 0 ? true : false;
-					}
-					loading = false;
-				}, 3000);
-			});
+		let answer = json.answer === 'true' ? true : false;
+		let message: string = '';
+
+		if (words.order) {
+			message = 'The english word for ' + words.french + ' is ' + words.eng + '.';
+		} else {
+			message = 'The french word for ' + words.eng + ' is ' + words.french + '.';
+		}
+
+		answers.push({ message, answer: answer });
+
+		setTimeout(async () => {
+			toastStore.clear();
+			await init();
+			loading = false;
+			page_loading = false;
+		}, 1000);
 	}
 </script>
 
@@ -99,7 +111,7 @@
 					<span class="text-primary-600 lowercase relative mr-5"
 						>{words.eng}<span class="absolute w-5 h-5 top-2"><Tts text={words.eng} /></span></span
 					>
-					if {words.french}.
+					is {words.french}.
 				</h1>
 			{/if}
 
@@ -124,16 +136,41 @@
 	{#if end}
 		<div class="flex flex-col w-full h-full justify-center items-center">
 			<h1 class="text-[24px]">You finished the exam!</h1>
-			<h2 class="text-[16px] mt-4 ml-4">You won {score.won} and lost {score.lost} rounds</h2>
-		</div>
+			<h2 class="text-[16px] mt-4 ml-4">You won {score.won} rounds and lost {score.lost} rounds</h2>
 
-		<button
-			class="btn bg-primary-500 btn-lg"
-			on:click={() => {
-				init();
-				end = false;
-			}}>Restart</button
-		>
+			<div class="flex flex-col justify-start gap-4 my-8">
+				{#each answers as answer}
+					<div class="flex">
+						<span class="w-5 h-5 mr-5">
+							{#if answer.answer}
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fill-green-600"
+									><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+										d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+									/></svg
+								>
+							{:else}
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-red-600"
+									><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+										d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+									/></svg
+								>
+							{/if}
+						</span>
+						<span>
+							{answer.message}
+						</span>
+					</div>
+				{/each}
+			</div>
+
+			<button
+				class="btn bg-primary-500 btn-lg"
+				on:click={() => {
+					init();
+					end = false;
+				}}>Restart</button
+			>
+		</div>
 	{/if}
 {/if}
 
