@@ -43,16 +43,22 @@
 			}
 		})
 			.then((res) => res.json())
-			.then((data) => {
+			.then((json) => {
+				let good_word = json.word;
+
 				const t: ToastSettings = {
-					message: data.status === 'won' ? 'Correct!' : 'Incorrect!',
+					message:
+						json.status === 'won'
+							? 'Correct!'
+							: `Incorrect the answer was <span class="underline">${good_word}</span> !`,
 					classes: 'toast-center toast-bottom w-64 mb-10',
-					background: data.status === 'won' ? 'bg-success-700' : 'bg-error-700',
+					background: json.status === 'won' ? 'bg-success-700' : 'bg-error-700',
 					timeout: 3000
 				};
 				toastStore.trigger(t);
 
 				setTimeout(async () => {
+					toastStore.clear();
 					refresh();
 					guess = '';
 
@@ -102,7 +108,7 @@
 			{/each}
 		</div>
 	{:else}
-		<section class="flex justify-center items-center gap-4 mt-10 w-full">
+		<section class="flex flex-col justify-center items-center gap-4 mt-10 w-full">
 			<div class="grid grid-cols-5 gap-4 gap-y-6">
 				{#each Array(10) as _}
 					<div class="placeholder animate-pulse w-24 h-24 rounded-lg" />

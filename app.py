@@ -205,9 +205,9 @@ def verif_word():
     print(word)
     print(en_words[session["disorder"]])
     if word == en_words[session["disorder"]]:
-        return {"status": "won"}
+        return {"status": "won", "word": en_words[session["disorder"]]}
     else:
-        return {"status": "lost"}
+        return {"status": "lost", "word": en_words[session["disorder"]]}
 
 
 ### TODO : QCM choisir 4 mots.
