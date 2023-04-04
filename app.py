@@ -119,6 +119,8 @@ def TORF_False():
 @app.route("/TORF_EXAM")
 def TORF_EXAM():
     i = rd.randint(0, len(en_words)-1)
+    session["en_word"] = en_words[i]
+    session["fr_word"] = fr_words[i]
 
     if not session.get("score"):
         session["score"] = 0
@@ -242,6 +244,58 @@ def verif_QCM():
     else:
         return {"status": "lost"}
     
+
+@app.route("/QCM_EXAM")
+def QCM_EXAM():
+    i = rd.randint(0, len(en_words)-1)
+
+    session["QCM_EXAM"] = i
+
+    fr_list = []
+    
+    for _ in range(3):
+        j = rd.randint(0, len(fr_words)-1)
+        while j == i:
+            j = rd.randint(0, len(en_words)-1)
+        fr_list.append(fr_words[j])
+
+    fr_list.append(fr_words[i])
+
+    rd.shuffle(fr_list)
+
+    if not session.get("score_QCM"):
+        session["score_QCM"] = 0
+
+    if not session.get("total_QCM"):
+        session["total_QCM"] = 0
+
+    return {"fr_list": fr_list, "en_word": en_words[i], "score_QCM": session["score_QCM"], "total_QCM":session["total_QCM"]}
+
+@app.route("/verif_QCM_EXAM")
+def verif_QCM_EXAM():
+    word = request.args.get("word")
+    session["total_QCM"] += 1
+
+    if word==fr_words[session["QCM_EXAM"]]:
+        session["score_QCM"] += 1
+        if session["total_QCM"] == 10:
+            return redirect("/QCM_EXAM_END")
+        return redirect("/QCM_EXAM")
+    else:
+        if session["total_QCM"] == 10:
+            return redirect("/QCM_EXAM_END")
+        return redirect("/QCM_EXAM")
+    
+@app.route("/QCM_EXAM_END")
+def QCM_EXAM_END():
+    s = session["score_QCM"]
+    t = session["total_QCM"]
+    session["score_QCM"] = 0
+    session["total_QCM"] = 0
+
+    return {"status": "end", "score_QCM": s, "total_QCM": t}
+
+
 if __name__ == "__main__":
     app.run(debug = True, port=5454)
 
