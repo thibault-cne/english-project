@@ -6,6 +6,7 @@
 
 	let guess: string;
 	let words: [string, string, string, string];
+	let answer: string;
 	let page_loading = true;
 	let loading = false;
 
@@ -28,6 +29,7 @@
 		let json = await rep.json();
 		words = json.fr_list;
 		guess = json.en_word;
+		answer = json.fr_word;
 	}
 
 	function guess_word(word: string) {
@@ -49,8 +51,11 @@
 			.then((res) => res.json())
 			.then((data) => {
 				const t: ToastSettings = {
-					message: data.status === 'won' ? 'Correct!' : 'Incorrect',
-					classes: 'toast-center toast-bottom w-64 mb-10',
+					message:
+						data.status === 'won'
+							? 'Correct!'
+							: 'Incorrect, the correct answer was : ' + answer + '.',
+					classes: 'toast-center toast-bottom w-72 mb-10',
 					background: data.status === 'won' ? 'bg-success-700' : 'bg-error-700',
 					timeout: 3000
 				};
