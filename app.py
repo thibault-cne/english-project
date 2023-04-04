@@ -128,6 +128,9 @@ def TORF_EXAM():
     if not session.get("total"):
         session["total"] = 0
 
+    if session["total"] == 10:
+        return redirect("/TORF_EXAM_END")
+
     e = rd.randint(0, 1)
     n = rd.randint(0, 1)
     if n == 0:
@@ -153,27 +156,20 @@ def TORF_EXAM_True():
     session["total"] += 1
     if current_TORF:
         session["score"] += 1
-        if session["total"] == 10:
-            return redirect("/TORF_EXAM_END")
-
-        return redirect("/TORF_EXAM")    
+        return {"answer":"true", "fr_word":session["fr_word"], "en_word":session["en_word"], "score": session["score"], "total":session["total"]}
     else:
-        if session["total"] == 10:
-            return redirect("/TORF_EXAM_END")
-        return redirect("/TORF_EXAM")   
+        return {"answer":"false", "fr_word":session["fr_word"], "en_word":session["en_word"], "score": session["score"], "total":session["total"]}
+   
     
 @app.route("/TORF_EXAM_False")
 def TORF_EXAM_False():
     session["total"] += 1
     if current_TORF:
-        if session["total"] == 10:
-            return redirect("/TORF_EXAM_END")
-        return redirect("/TORF_EXAM")   
+        return {"answer":"false", "fr_word":session["fr_word"], "en_word":session["en_word"], "score": session["score"], "total":session["total"]}
     else:
         session["score"] += 1
-        if session["total"] == 10:
-            return redirect("/TORF_EXAM_END")
-        return redirect("/TORF_EXAM")   
+        return {"answer":"true", "fr_word":session["fr_word"], "en_word":session["en_word"], "score": session["score"], "total":session["total"]}
+
     
 @app.route("/TORF_EXAM_END")
 def TORF_EXAM_RESULT():
