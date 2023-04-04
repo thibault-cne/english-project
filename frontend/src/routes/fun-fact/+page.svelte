@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { unionjack } from '$lib/constants/image';
 
-	let funfact = 'This is a funfact';
+	let funfact = '';
 
 	onMount(() => {
 		fetch(env.backendUrl + '/fun-fact', {
@@ -24,7 +24,7 @@
 	<title>Fun fact</title>
 </svelte:head>
 
-<div class="relative h-full">
+<div class="relative h-full w-full flex flex-col items-center">
 	<h1 class="p-4 font-bold text-[48px]">Here is an english fun fact:</h1>
 
 	<span class="text-[16px] mt-4">{funfact}</span>

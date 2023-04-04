@@ -45,7 +45,7 @@
 					<li><a href="/fun-fact" class="unstyled btn btn-ghost">Fun fact</a></li>
 					<li><a href="/scramble" class="unstyled btn btn-ghost">Scramble</a></li>
 					<li><a href="/qcm" class="unstyled btn btn-ghost">QCM</a></li>
-					<li tabindex="-1" class="font-semibold">
+					<li tabindex="-1">
 						<span>
 							True or false
 							<svg
@@ -66,7 +66,7 @@
 							</li>
 						</ul>
 					</li>
-					<li tabindex="-1" class="font-semibold">
+					<li tabindex="-1">
 						<span>
 							Lessons
 							<svg
@@ -96,8 +96,8 @@
 	</div>
 	<svelte:fragment slot="footer">
 		<footer class="p-2 shadow md:px-4 md:py-6 bg-surface-700">
-			<div class="block text-sm sm:text-center hover:underline cursor-pointer">
-				<p>Made with ❤️ by Aurelien and Thibault</p>
+			<div class="block sm:text-center hover:underline cursor-pointer">
+				<a href="/hero" class="unstyled">Made with ❤️ by Aurelien and Thibault</a>
 			</div>
 		</footer>
 	</svelte:fragment>
