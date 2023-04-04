@@ -265,22 +265,21 @@ def QCM_EXAM():
     if not session.get("total_QCM"):
         session["total_QCM"] = 0
 
+    if session["total_QCM"] == 10:
+        return redirect("/QCM_EXAM_END")
+
     return {"fr_list": fr_list, "en_word": en_words[i], "score_QCM": session["score_QCM"], "total_QCM":session["total_QCM"]}
 
 @app.route("/verif_QCM_EXAM")
 def verif_QCM_EXAM():
     word = request.args.get("word")
     session["total_QCM"] += 1
-
     if word==fr_words[session["QCM_EXAM"]]:
         session["score_QCM"] += 1
-        if session["total_QCM"] == 10:
-            return redirect("/QCM_EXAM_END")
-        return redirect("/QCM_EXAM")
+        return {"answer":"true", "fr_word":fr_words[session["QCM_EXAM"]], "en_word":en_words[session["QCM_EXAM"]], "score_QCM": session["score_QCM"], "total_QCM":session["total_QCM"]}
     else:
-        if session["total_QCM"] == 10:
-            return redirect("/QCM_EXAM_END")
-        return redirect("/QCM_EXAM")
+        return {"answer":"false", "fr_word":fr_words[session["QCM_EXAM"]], "en_word":en_words[session["QCM_EXAM"]], "score_QCM": session["score_QCM"], "total_QCM":session["total_QCM"]}
+
     
 @app.route("/QCM_EXAM_END")
 def QCM_EXAM_END():
