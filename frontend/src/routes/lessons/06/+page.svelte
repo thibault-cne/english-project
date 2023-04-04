@@ -1,3 +1,7 @@
+<script lang="ts">
+	import LessonFooter from '$lib/components/LessonFooter.svelte';
+</script>
+
 <svelte:head>
 	<title>Lesson - 06</title>
 </svelte:head>
@@ -26,3 +30,5 @@
 	meaning, you have a linking verb. The milk may turn be sour. I feel am refreshed. Laurie appears is
 	tired.
 </p>
+
+<LessonFooter previous="/lessons/05" next="/lessons/06" />

@@ -1,3 +1,7 @@
+<script lang="ts">
+	import LessonFooter from '$lib/components/LessonFooter.svelte';
+</script>
+
 <svelte:head>
 	<title>Lesson - 02</title>
 </svelte:head>
@@ -52,3 +56,5 @@
 	Don't forget to capitalize all parts of proper nouns. Many people forget to capitalize words like river
 	and county in proper nouns like Yellow River and Orange County.
 </p>
+
+<LessonFooter previous="/lessons/01" next="/lessons/03" />

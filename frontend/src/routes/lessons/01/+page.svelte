@@ -1,3 +1,7 @@
+<script lang="ts">
+	import LessonFooter from '$lib/components/LessonFooter.svelte';
+</script>
+
 <svelte:head>
 	<title>Lesson - 01</title>
 </svelte:head>
@@ -88,3 +92,5 @@
 <p class="mt-4 text-[16px]">
 	<span class="font-semibold italic underline">Hint:</span> Remember, pronouns are not nouns.
 </p>
+
+<LessonFooter previous="/lessons/01" next="/lessons/02" />

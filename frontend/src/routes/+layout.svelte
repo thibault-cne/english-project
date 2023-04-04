@@ -1,9 +1,8 @@
 <script lang="ts">
-	import '@skeletonlabs/skeleton/themes/theme-modern.css';
-
 	import '@skeletonlabs/skeleton/styles/all.css';
 
 	import '../app.postcss';
+	import '../app.css';
 
 	import { AppShell } from '@skeletonlabs/skeleton';
 
@@ -92,9 +91,16 @@
 			</div>
 		</div>
 	</svelte:fragment>
-	<div class="z-0 p-10">
+	<div class="z-0 p-10 h-full">
 		<slot />
 	</div>
+	<svelte:fragment slot="footer">
+		<footer class="p-2 shadow md:px-4 md:py-6 bg-surface-700">
+			<div class="block text-sm sm:text-center hover:underline cursor-pointer">
+				<p>Made with ❤️ by Aurelien and Thibault</p>
+			</div>
+		</footer>
+	</svelte:fragment>
 </AppShell>
 
 <style>

@@ -1,3 +1,7 @@
+<script lang="ts">
+	import LessonFooter from '$lib/components/LessonFooter.svelte';
+</script>
+
 <svelte:head>
 	<title>Lesson - 03</title>
 </svelte:head>
@@ -51,3 +55,5 @@
 		</tbody>
 	</table>
 </div>
+
+<LessonFooter previous="/lessons/02" next="/lessons/04" />

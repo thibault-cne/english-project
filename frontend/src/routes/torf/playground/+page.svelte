@@ -8,6 +8,7 @@
 		eng: '',
 		french: ''
 	};
+	let loading = false;
 
 	onMount(() => {
 		refresh();
@@ -26,6 +27,7 @@
 
 	function post(type: string) {
 		const url = `${env.backendUrl}/TORF_${type}`;
+		loading = true;
 
 		fetch(url, {
 			method: 'GET',
@@ -40,13 +42,14 @@
 					message: data.status === 'won' ? 'You won!' : 'You lost!',
 					classes: 'toast-center toast-bottom w-64 mb-10',
 					background: data.status === 'won' ? 'bg-success-700' : 'variant-filled-error',
-					timeout: 5000
+					timeout: 3000
 				};
 				toastStore.trigger(t);
 
 				setTimeout(() => {
 					refresh();
-				}, 5000);
+					loading = false;
+				}, 3000);
 			});
 	}
 </script>
@@ -55,18 +58,23 @@
 	<title>True or false</title>
 </svelte:head>
 
-<div class="flex flex-col">
-	<h1 class="text-[24px]">Does the word {words.eng} is the english of {words.french} ?</h1>
+<div class="flex flex-col w-full h-full justify-center items-center">
+	<h1 class="text-[24px]">
+		Does the word <span class="text-primary-600 lowercase">{words.eng}</span> is the english of {words.french}
+		?
+	</h1>
 
 	<div class="flex self-center w-full justify-evenly mt-10 p-4">
 		<button
 			class="btn bg-primary-500 btn-lg"
+			disabled={loading}
 			on:click={() => {
 				post('True');
 			}}>True</button
 		>
 		<button
 			class="btn bg-primary-500 btn-lg"
+			disabled={loading}
 			on:click={() => {
 				post('False');
 			}}>False</button

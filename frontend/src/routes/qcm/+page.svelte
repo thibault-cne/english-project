@@ -5,7 +5,8 @@
 
 	let guess: string;
 	let words: [string, string, string, string];
-	let loading = true;
+	let page_loading = true;
+	let loading = false;
 
 	onMount(() => {
 		init();
@@ -25,7 +26,7 @@
 			.then((data) => {
 				words = data.fr_list;
 				guess = data.en_word;
-				loading = false;
+				page_loading = false;
 			});
 	}
 
@@ -35,6 +36,7 @@
 			new URLSearchParams({
 				word: word
 			});
+		loading = true;
 
 		fetch(url, {
 			credentials: 'include',
@@ -55,6 +57,7 @@
 
 				setTimeout(() => {
 					init();
+					loading = false;
 				}, 3000);
 			});
 	}
@@ -64,30 +67,36 @@
 	<title>QCM</title>
 </svelte:head>
 
-{#if !loading}
-	<div class="flex flex-col w-full">
-		<h1 class="text-[24px]">What is the french of {guess} ?</h1>
+{#if !page_loading}
+	<div class="flex flex-col w-full h-full justify-center items-center">
+		<h1 class="text-[24px]">
+			What is the french of <span class="text-primary-600 lowercase">{guess}</span> ?
+		</h1>
 		<div class="grid grid-cols-2 mt-10 w-2/3 gap-y-6 gap-x-4 self-center">
 			<button
 				class="btn btn-lg variant-filled-primary"
+				disabled={loading}
 				on:click={() => {
 					guess_word(words[0]);
 				}}>{words[0]}</button
 			>
 			<button
 				class="btn btn-lg variant-filled-primary"
+				disabled={loading}
 				on:click={() => {
 					guess_word(words[1]);
 				}}>{words[1]}</button
 			>
 			<button
 				class="btn btn-lg variant-filled-primary"
+				disabled={loading}
 				on:click={() => {
 					guess_word(words[2]);
 				}}>{words[2]}</button
 			>
 			<button
 				class="btn btn-lg variant-filled-primary"
+				disabled={loading}
 				on:click={() => {
 					guess_word(words[3]);
 				}}>{words[3]}</button

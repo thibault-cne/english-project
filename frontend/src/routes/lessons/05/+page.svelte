@@ -1,3 +1,7 @@
+<script lang="ts">
+	import LessonFooter from '$lib/components/LessonFooter.svelte';
+</script>
+
 <svelte:head>
 	<title>Lesson - 05</title>
 </svelte:head>
@@ -27,3 +31,5 @@
 	process, but learning is still an action. I think my shoes are under the bed. You can't really see
 	the thoughts going through the person's mind, but thinking is still an action. It's what you're doing.
 </p>
+
+<LessonFooter previous="/lessons/04" next="/lessons/06" />
