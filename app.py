@@ -89,7 +89,7 @@ def TORF():
         current_TORF = True
         en_word = en_words[i]
         fr_word = fr_words[i]
-        return {"en_word":en_word, "fr_word":fr_word}
+        return {"en_word":en_word, "fr_word":fr_word, "real_answer":fr_word}
     else:
         current_TORF = False
         j = rd.randint(0, len(en_words)-1)
@@ -97,7 +97,7 @@ def TORF():
             j = rd.randint(0, len(en_words)-1)
         en_word = en_words[j]   
         fr_word = fr_words[i]
-        return {"en_word":en_word, "fr_word":fr_word}
+        return {"en_word":en_word, "fr_word":fr_word, "real_answer":fr_words[i]}
     
 
 
@@ -233,7 +233,7 @@ def QCM():
 
     rd.shuffle(fr_list)
 
-    return {"fr_list": fr_list, "en_word": en_words[i]}
+    return {"fr_list": fr_list, "en_word": en_words[i], "fr_word": fr_words[i]}
 
 
 @app.route("/verif_QCM")
