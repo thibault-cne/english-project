@@ -62,7 +62,7 @@
 
 		let json = await rep.json();
 		let answer = json.answer === 'true' ? true : false;
-		let message = 'The english word for ' + json.fr_word + ' is ' + word + '.';
+		let message = 'The french word for ' + json.en_word + ' is ' + word + '.';
 
 		answers.push({
 			message: message,
