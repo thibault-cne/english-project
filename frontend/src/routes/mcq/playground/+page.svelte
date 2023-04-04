@@ -66,7 +66,7 @@
 </script>
 
 <svelte:head>
-	<title>QCM</title>
+	<title>MCQ</title>
 </svelte:head>
 
 {#if page_loading}

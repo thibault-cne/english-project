@@ -57,7 +57,7 @@
 </script>
 
 <svelte:head>
-	<title>True or false</title>
+	<title>True or false - Playground</title>
 </svelte:head>
 
 {#if loading}
@@ -71,11 +71,10 @@
 {:else}
 	<div class="flex flex-col w-full h-full justify-center items-center">
 		<h1 class="text-[24px]">
-			Does the word <span class="text-primary-600 lowercase relative mr-5"
+			The english word for {words.french} is
+			<span class="text-primary-600 lowercase relative mr-5"
 				>{words.eng}<span class="absolute w-5 h-5 top-2"><Tts text={words.eng} /></span></span
-			>
-			is the english of {words.french}
-			?
+			>.
 		</h1>
 
 		<div class="flex self-center w-full justify-evenly mt-10 p-4">

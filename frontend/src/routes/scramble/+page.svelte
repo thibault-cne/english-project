@@ -6,27 +6,28 @@
 
 	let word: string;
 	let guess: string = '';
-	let loading = false;
+	let loading = true;
 
-	onMount(() => {
-		refresh();
+	onMount(async () => {
+		await refresh();
 		addEventListener('keydown', listener);
+
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+		loading = false;
 	});
 
-	function refresh() {
+	async function refresh() {
 		const url = env.backendUrl + '/disorder';
 
-		fetch(url, {
+		let rep = await fetch(url, {
 			credentials: 'include',
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				word = data.permutated_word;
-			});
+		});
+		let json = await rep.json();
+		word = json.permutated_word;
 	}
 
 	function check() {
@@ -51,9 +52,11 @@
 				};
 				toastStore.trigger(t);
 
-				setTimeout(() => {
+				setTimeout(async () => {
 					refresh();
 					guess = '';
+
+					await new Promise((resolve) => setTimeout(resolve, 1000));
 					loading = false;
 				}, 3000);
 			});
@@ -78,7 +81,7 @@
 <div class="relative flex flex-col w-full h-full justify-center items-center">
 	<h1 class="absolute p-4 font-bold text-[48px] top-0">Scramble</h1>
 
-	{#if word != undefined}
+	{#if !loading}
 		<div class="flex justify-center items-center gap-4 mt-10">
 			{#each word as letter}
 				<div class="w-24 h-24 bg-surface-700 rounded-lg flex justify-center items-center">
@@ -98,6 +101,14 @@
 				</div>
 			{/each}
 		</div>
+	{:else}
+		<section class="flex justify-center items-center gap-4 mt-10 w-full">
+			<div class="grid grid-cols-5 gap-4 gap-y-6">
+				{#each Array(10) as _}
+					<div class="placeholder animate-pulse w-24 h-24 rounded-lg" />
+				{/each}
+			</div>
+		</section>
 	{/if}
 </div>
 

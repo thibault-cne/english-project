@@ -38,13 +38,33 @@
 	<svelte:fragment slot="header"
 		><div class="navbar bg-surface-700 z-10">
 			<div class="flex-1">
-				<a class="btn btn-ghost normal-case text-xl" href="/">EnglishEasy</a>
+				<a class="btn btn-ghost normal-case text-xl" href="/">English-Easy</a>
 			</div>
 			<div class="flex-none">
 				<ul class="menu menu-horizontal px-1">
 					<li><a href="/fun-fact" class="unstyled btn btn-ghost">Fun fact</a></li>
 					<li><a href="/scramble" class="unstyled btn btn-ghost">Scramble</a></li>
-					<li><a href="/qcm" class="unstyled btn btn-ghost">QCM</a></li>
+					<li tabindex="-1">
+						<span>
+							MCQ
+							<svg
+								class="fill-current"
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
+							>
+						</span>
+						<ul class="p-2 bg-surface-700 z-10">
+							<li class="z-10">
+								<a href="/mcq/playground" class="unstyled btn btn-ghost">Playground</a>
+							</li>
+							<li class="z-10">
+								<a href="/mcq/exam" class="unstyled btn btn-ghost">Exam</a>
+							</li>
+						</ul>
+					</li>
 					<li tabindex="-1">
 						<span>
 							True or false

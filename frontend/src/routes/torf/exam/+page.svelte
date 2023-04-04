@@ -72,7 +72,7 @@
 </script>
 
 <svelte:head>
-	<title>True or false</title>
+	<title>True or false - Exam</title>
 </svelte:head>
 
 {#if page_loading}
@@ -88,18 +88,18 @@
 		<div class="flex flex-col w-full h-full justify-center items-center">
 			{#if words.order}
 				<h1 class="text-[24px]">
-					Does the word <span class="text-primary-600 lowercase relative mr-5"
+					The english word for {words.french} is
+					<span class="text-primary-600 lowercase relative mr-5"
 						>{words.eng}<span class="absolute w-5 h-5 top-2"><Tts text={words.eng} /></span></span
-					>
-					is the english of {words.french}
-					?
+					>.
 				</h1>
 			{:else}
 				<h1 class="text-[24px]">
-					Does the word {words.french} is the french of
+					The french word for
 					<span class="text-primary-600 lowercase relative mr-5"
 						>{words.eng}<span class="absolute w-5 h-5 top-2"><Tts text={words.eng} /></span></span
-					> ?
+					>
+					if {words.french}.
 				</h1>
 			{/if}
 
