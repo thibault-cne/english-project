@@ -54,7 +54,7 @@
 	}
 
 	onMount(async () => {
-		// await load();
+		await load();
 	});
 
 	function play() {
@@ -77,8 +77,7 @@
 			/></svg
 		>
 	</span>
-{/if}
-{#if !loaded}
+{:else}
 	<span class="cursor-pointer disabled">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

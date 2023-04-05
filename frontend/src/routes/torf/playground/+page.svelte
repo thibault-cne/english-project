@@ -47,7 +47,7 @@
 						json.status === 'won'
 							? 'You won!'
 							: 'You lost, the real answer was : ' + words.real + '.',
-					classes: 'toast-center toast-bottom w-64 mb-10',
+					classes: 'toast-center toast-bottom w-72 mb-10',
 					background: json.status === 'won' ? 'bg-success-700' : 'variant-filled-error',
 					timeout: 3000
 				};
